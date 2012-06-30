@@ -1,0 +1,6 @@
+<?php
+define('FB_APPID','304075436291835');
+define('FB_SECRET','003e3b71113437c891eba636d0f2098e');
+define('FB_REDIRECT','http://localhost:8888/stocks/login.php');
+define('FB_REDIRECTLOGIN','http://localhost:8888/stocks/');
+?>

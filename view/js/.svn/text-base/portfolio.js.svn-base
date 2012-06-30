@@ -1,0 +1,195 @@
+YUI().add('stock-ajax',function(Y){
+        Y.namespace('Stock.jax');
+        Y.Stock.Ajax = function(oArgs){
+		Y.on('io:complete', oArgs.onComplete, Y);
+		var request = Y.io(oArgs.uri);
+        };
+},'0.1.1', {requires: []});
+
+YUI().add('stock-add-overlay',function(Y){
+	Y.namespace('Stock.AddOverlay');
+	Y.Stock.AddOverlay.render = function(){
+                var overlay = new Y.Overlay({
+                        srcNode:"#add-stock-overlay",
+                        xy:[400,250]
+		});
+		overlay.render();
+	};
+	Y.Stock.AddOverlay.show = function(){
+		var overlay = document.getElementById('add-stock-overlay');
+		overlay.style.display = 'block';
+	};
+	Y.Stock.AddOverlay.hide = function(){
+		var overlay = document.getElementById('add-stock-overlay');
+		overlay.style.display = 'none';
+		var overlaybuytext = document.getElementById('stockquantity');
+		overlaybuytext.style.display = 'none';
+	};
+	Y.Stock.AddOverlay.ShowBuyText = function(){
+		var heading = Y.one("#overlay-heading").getAttribute('stocksymbol');
+		var action = this.getAttribute('label');
+		Y.one("#overlay-heading").one("h2").set('innerHTML',action+" "+heading+" stocks");
+		Y.one("#stock-add-ok").setAttribute('action',action);
+		var overlaybuytext = document.getElementById('stockquantity');
+		overlaybuytext.style.display = 'block';
+	};
+	Y.Stock.AddOverlay.submit = function(){
+			var symbol = this.getAttribute("stocksymbol");
+			var quantity = Y.one("#stockquantity").get('value');
+			var url;
+			Y.one("#overlay-dt").set('innerHTML','');
+			if(this.getAttribute('action') == "Buy"){
+				url ="ws/stocks_ws.php?action=addstock&userid=1&symbol="+symbol+"&quantity="+quantity; 
+			}else{
+				url ="ws/stocks_ws.php?action=sellstock&userid=1&symbol="+symbol+"&quantity="+quantity; 
+			}
+			var config = {
+				uri:url,
+				onComplete:function(id, o, args) {
+					var id = id;
+					try {
+						Y.one("#notification").set('innerHTML','');
+						var data = o.responseText;
+						data = Y.JSON.parse(data);
+						if(data){
+							Y.one("#totalamount").set("innerHTML","$"+data.totalamount);
+							if(data.msg){
+								Y.one("#notification").set('innerHTML',data.msg);
+							}
+						}
+						Y.Stock.AddOverlay.hide();
+						var addbutton = document.getElementById('stock-add-ok');
+						var cancelbutton = document.getElementById('stock-add-cancel');
+						addbutton.style.display = 'none';
+						cancelbutton.style.display = 'none';	
+						Y.Stock.Overlay.render();
+					}
+					catch (e) {
+					    console.log(e);
+					}
+				}
+			};
+			Y.on('io:complete', config.onComplete, Y);
+			var request = Y.io(config.uri);
+	};
+	Y.on('keyup',function(e){
+		if(e.keyCode == 13){
+			var addbutton = document.getElementById('stock-add-ok');
+			var cancelbutton = document.getElementById('stock-add-cancel');
+			addbutton.style.display = 'block';
+			cancelbutton.style.display = 'block';	
+		}
+	},'#stockquantity');
+},'0.0.1',{requires:[]});
+
+YUI.add('stock-button',function(Y){
+	var YAHOO = Y.YUI2;
+	Y.namespace('Stock.Button');
+		Y.Stock.Button.enterKey = Y.on('keyup',function(e){
+			if(e.keyCode == 13){
+				var searchquery = Y.one("#search-stock").get('value');
+				this.config = {
+					uri:"ws/stocks_ws.php?action=searchstock&q="+searchquery,
+					onComplete:function(id, o, args) {
+						try {
+							this.data = o.responseText;
+							if(this.data){
+							this.data = Y.JSON.parse(this.data);
+							var datalength = this.data.resultlist.length;
+							for (var i = 0; i < datalength; i++) {
+							    if(i == 0){
+								Y.one('#searchresults').set('innerHTML','');
+							    }
+							    var p = this.data.resultlist[i];
+							    var item = "<div id='searchitem'>"+
+									"<div id='symbol'>"+p.symbol+"</div>"+
+									"<div id='companyname'>"+p.name+"</div></div>";
+							    Y.one('#searchresults').append(item);
+							}
+							Y.on('click',function(){
+								console.log('aaa');
+								Y.Stock.AddOverlay.show();
+								var symbol = this.one("#symbol").get("innerHTML");
+								Y.one("#overlay-heading").set('innerHTML','<h2>'+symbol+' stocks</h2>');
+								Y.one("#overlay-heading").setAttribute('stocksymbol',symbol);
+								Y.one("#stock-add-ok").setAttribute("stocksymbol",symbol);
+							},"#searchitem");
+							}
+						}
+						catch (e) {
+						    console.log(e);
+						}
+					}
+				};
+				Y.on('io:complete', this.config.onComplete, Y);
+				var request = Y.io(this.config.uri);
+			}
+		},"#search-stock");
+},'0.1.1',{requires:[]});
+
+
+YUI().add('stock-overlay',function(Y){
+	Y.namespace('Stock.Overlay');
+	Y.Stock.Overlay.render = function(){
+		if (Y.YUI2) {
+                var YAHOO = Y.YUI2;
+                        //YAHOO.example.Basic = function() {
+				var myColumnDefs = Y.Stock.Constants.values.dataTableHeader;
+                                var myDataSource = new YAHOO.util.XHRDataSource("ws/stocks_ws.php?action=list");
+                                myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSON;
+                                myDataSource.connXhrMode = "queueRequests";
+                                myDataSource.responseSchema = {
+                                    resultsList: "stocks",
+				    fields:Y.Stock.Constants.values.fields
+                                };
+//				var paginator = new YAHOO.widget.Paginator({
+//							rowsPerPage:20,
+//							container:'pag',
+//							template:Y.Stock.Constants.dataTablePaginator
+//							template :
+//								'<h3>Now showing page: {JumpToPageDropdown}</h3>' +
+//								'<p>{CurrentPageReport}</p>' +
+//								'<p class="pg-nav">' +
+//								'{FirstPageLink} {PreviousPageLink} ' +
+//								'{NextPageLink} {LastPageLink}' +
+//								'</p>' +
+//								'<label>Page size: {RowsPerPageDropdown}</label>' +
+//								'<h3>Directory</h3>' +
+//								'{PageLinks}', 
+//						});
+				var myConfig = {
+//						paginator:paginator
+				};
+                                var myDataTable = new YAHOO.widget.DataTable("overlay-dt",myColumnDefs, myDataSource,myConfig);
+//				var myCallback = {
+//				    success: function(){
+//					myDataTable.onDataReturnInitializeTable;
+//				    },
+//				    failure: function() {
+//					YAHOO.log("Polling failure", "error");
+//				    },
+//				    scope: myDataTable
+//				};
+//				myDataSource.setInterval(60000, null, myCallback);
+//				myDataSource.sendRequest("", myCallback);
+                                return {
+                                        oDS: myDataSource,
+                                        oDT: myDataTable
+                                };
+                        //}();
+		} 
+	};
+});
+
+
+YUI().use('node','io','json-parse', 'json-stringify','overlay','event','overlay','node', 'yui2-yahoo','yui2-datatable','yui2-connection', 'yui2-datasource','yui2-json','yui2-paginator','stock-overlay','stock-button','stock-ajax','stock-constants','stock-add-overlay','stock-portfolio',function(Y){
+        var datatable = Y.Stock.Overlay.render();
+	Y.Stock.AddOverlay.render();
+        Y.on("click",Y.Stock.AddOverlay.hide,"#overlay-hide");
+        Y.on("click",Y.Stock.AddOverlay.hide,"#stock-add-cancel");
+        Y.on("click",Y.Stock.AddOverlay.submit,"#stock-add-ok");
+	Y.on("click",Y.Stock.AddOverlay.ShowBuyText,"#stock-buy-label");
+	Y.on("click",Y.Stock.AddOverlay.ShowBuyText,"#stock-sell-label");
+	Y.Stock.Portfolio.datatable();
+	Y.Stock.Button.enterKey;
+});
