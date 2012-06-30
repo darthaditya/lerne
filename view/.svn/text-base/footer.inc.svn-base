@@ -1,0 +1,17 @@
+   <div id="ft" role="contentinfo"><p>MadaboutM 2011</p></div>
+</div>
+<script type="text/javascript">
+YUI().use('node',function(Y){
+	Y.one("#userpicture").one("img").setAttribute("src",'<?php echo $_SESSION[fbuserpic] ?>');
+	Y.one("#username").set("innerHTML",'<?php echo $_SESSION[username] ?>');
+	Y.one("#totalamount").set("innerHTML",'Cash: $<?php echo $_SESSION[totalamount] ?>');
+	Y.one("#totalamount").setAttribute("value",'<?php echo $_SESSION[totalamount] ?>');
+	Y.one("#headerfollowercount").set("innerHTML",'Followers: <?php echo $_SESSION[followercount] ?>');
+	if(Y.one("#followercount")){
+		Y.one("#followercount").set("innerHTML",'Followers: <?php echo $_SESSION[followercount] ?>');
+	}
+});
+</script>
+</body>
+</html>
+

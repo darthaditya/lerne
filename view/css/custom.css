@@ -1,0 +1,30 @@
+.lr_user_image{
+	float:left;
+	height:66px;
+	width:66px;
+	padding:2px;
+	border:1px solid #FFFFFF;
+	margin-right:10px;
+}
+.lr_user_image:hover{
+	box-shadow: 0 0 4px #000000;
+	border:none;
+}
+.ls_list_questions ul li{
+	clear:both;
+	height:70px;
+	background-color:#4891dc;
+	width:50%;
+	color:#FFFFFF;
+}
+.lr_login_user_name{
+	float:right;
+	color:#FFFFFF;
+	font-size:12px;
+}
+.lr_login_user_image{
+	height:24px;
+	width:24px;
+	border:1px solid #FFFFFF;
+	float:right;
+}

@@ -1,0 +1,54 @@
+body{font-family: "lucida grande",tahoma,verdana,arial,sans-serif;}
+h1{font-size:30px;}
+h2{font-size:20px;}
+#hd{border-bottom:1px #000000 solid;}
+#hd #leftheader{float:left;}
+#hd #rightheader{float:right;}
+#hd #userinfo #userpicture{float:left;}
+#hd #userinfo #username{float:right;}
+#hd #notification{text-align:center;}
+
+#loginbutton{height:400px;}
+#loginbutton img{margin-top:100px;}
+
+#overall-portfolio-data{display:none;}
+
+/*NEWS FEED*/
+#newsfeedheader{padding-bottom:10px;}
+#newsfeed #morefeed{text-decoration:underline;color:blue;cursor:pointer;display:none;}
+#newsfeeditems #newsitem{margin:5px;padding-bottom:5px;border-bottom:1px #000000 solid;height:100px;}
+#newsfeeditems #newsitem #newsuserpic{float:left;}
+#newsfeeditems #newsitem #newsuserpic img{border:1px solid #000000}
+#newsfeeditems #newsitem #newscomment{float:left;margin-left:15px;}
+
+#overlay,#add-stock-overlay{display:none;background:#FFFFFF;-moz-box-shadow: 0 0 5px 5px #888;-webkit-box-shadow: 0 0 5px 5px#888;box-shadow: 0 0 5px 5px #888;}
+#overlay-header{padding:10px;height:30px;}
+#overlay-heading{float:left;}
+#overlay-hide{float:right;cursor:pointer;}
+#overlay-dt{padding:20px;}
+#overlay-footer{padding:10px;}
+
+#ctx { background:orange;width:100px;height:25px; }
+
+#search-stock,#search-user{height:20px;width:100%;margin-top:10px;margin-bottom:10px;}
+#searchcompany{margin-top:5px;}
+#searchresults{overflow:auto;height:500px;}
+#searchresults #searchitem{margin-top:5px;margin-bottom:5px;}
+#searchresults #searchitem:hover{background-color:#D8DFE9;cursor:pointer;}
+
+#usersearchresults #usersearchitem{float:left;border 1px #000000 solid;width:100px;}
+#usersearchresults #usersearchitem:hover{cursor:pointer;text-decoration:underline;}
+
+#topportfolios #usersearchitem{height:60px;}
+#topportfolios #userpic{float:left;}
+#topportfolios #userfirstname,#followuser{float:left;width:70%;}
+#topportfolios #usersearchitem:hover{cursor:pointer;text-decoration:underline;}
+
+#add-stock-overlay #stock-add-ok,#stock-add-cancel{display:none;}
+#add-stock-overlay #stockquantity{margin:10px;height:20px;width:300px;display:none;}
+#add-stock-overlay #overlay-hide{padding-left:30px;}
+#add-stock-overlay #stock-add-ok-container,#stock-add-cancel-container{float:left;padding:5px;}
+#add-stock-overlay #overlay-footer{height:40px;}
+#add-stock-overlay #stock-buy-label,#stock-sell-label{text-decoration:underline;cursor:pointer;padding:10px;}
+
+#ft{border-top:1px #000000 solid;}

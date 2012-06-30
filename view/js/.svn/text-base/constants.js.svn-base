@@ -1,0 +1,97 @@
+YUI().add('stock-constants',function(Y){
+	Y.namespace("Stock.Constants");
+	Y.Stock.Constants.values = {
+		'dataTableHeader':[
+		    {key:"symbol",label:"Symbol",sortable:true},
+		    //{key:"name",label:"Name",sortable:true,minWidth:"10px"},
+		    {key:"costPrice",label:"Cost Price",sortable:true,width:"10px"},
+		    {key:"noOfStocks",label:"# of stocks",sortable:true,width:"10px"},
+		    {key:"closingPrice",label:"Closing Price",sortable:true,width:"10px"},
+		    {key:"currentPrice",label:"Current Price",sortable:true,width:"10px"},
+		    {key:"change",label:"Change",sortable:true,width:"10px"},
+		    {key:"changePercent",label:"Change %",sortable:true,width:"10px"},
+		    {key:"marketValue",label:"Market Value",sortable:true,width:"10px"},
+		    {key:"gain",label:"Gain",sortable:true,width:"10px"},
+		    {key:"gainPercent",label:"Gain Percent",sortable:true,width:"10px"},
+		],
+		"fields":["symbol","costPrice","noOfStocks","closingPrice","currentPrice","change","changePercent","marketValue","gain","gainPercent"],
+		'overalldataTableHeader':[
+		    {key:"previousDayValue",label:"Previous Day Value",sortable:true},
+		    {key:"currentValue",label:"Current Value",sortable:true,width:"10px"},
+		    {key:"change",label:"Change",sortable:true,width:"10px"},
+		    {key:"changePercent",label:"Change %",sortable:true,width:"10px"},
+		    {key:"gain",label:"Gain",sortable:true,width:"10px"},
+		    {key:"gainPercent",label:"Gain Percent",sortable:true,width:"10px"},
+		],
+		"overallfields":["previousDayValue","currentValue","change","changePercent","gain","gainPercent"],
+		'dataTablePaginator': '<h3>Now showing page: {JumpToPageDropdown}</h3>' +
+					'<p>{CurrentPageReport}</p>' +
+					'<p class="pg-nav">' +
+					'{FirstPageLink} {PreviousPageLink} ' +
+					'{NextPageLink} {LastPageLink}' +
+					'</p>' +
+					'<label>Page size: {RowsPerPageDropdown}</label>' +
+					'<h3>Directory</h3>' +
+					'{PageLinks}',
+	};
+});
+YUI().add('stock-portfolio',function(Y){
+        Y.namespace('Stock.Portfolio');
+        Y.Stock.Portfolio.init = function(){
+                var config = {
+                        uri:"ws/stocks_ws.php?action=list",
+                        onComplete:function(id, o, args) {
+                                try {
+                                        var data = o.responseText;
+                                        data = Y.JSON.parse(data);
+					if(data.currentValue){
+                                        Y.one("#totalportfolio").set('innerHTML',"Current Val: "+data.currentValue);
+                                        Y.one("#totalportfoliochange").set('innerHTML',"Gain % "+data.gainPercent);
+					if(Y.one("#currentvalue") && data.currentvalue){
+						console.log('currentvalue');
+						Y.one("#currentvalue").set('innerHTML',"Current Val: $"+data.currentValue);
+					}
+					if(Y.one("#currentgain") && data.gainPercent){
+						Y.one("#currentgain").set("innerHTML","Gain % "+data.gainPercent);
+					}
+					}
+                                }
+                                catch (e) {
+                                    console.log(e);
+                                }
+                        }
+                };
+                Y.on('io:complete', config.onComplete, Y);
+                var request = Y.io(config.uri);
+        };
+	Y.Stock.Portfolio.datatable = function(){
+		if (Y.YUI2) {
+                var YAHOO = Y.YUI2;
+                        //YAHOO.example.Basic = function() {
+			var myColumnDefs = Y.Stock.Constants.values.overalldataTableHeader;
+			var myDataSource = new YAHOO.util.XHRDataSource("ws/stocks_ws.php?action=list");
+			myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSON;
+			myDataSource.connXhrMode = "queueRequests";
+			myDataSource.responseSchema = {
+			    resultsList: "overall",
+			    fields:Y.Stock.Constants.values.overallfields
+			};
+			var myDataTable = new YAHOO.widget.DataTable("overall-data-loading",myColumnDefs, myDataSource);
+			var myCallback = {
+			    success: function(){
+				myDataTable.onDataReturnInitializeTable;
+			    },
+			    failure: function() {
+				YAHOO.log("Polling failure", "error");
+			    },
+			    scope: myDataTable
+			};
+			myDataSource.setInterval(60000, null, myCallback);
+			myDataSource.sendRequest("", myCallback);
+			return {
+				oDS: myDataSource,
+				oDT: myDataTable
+			};
+		}
+	};
+},'0.1.1', {requires: ['node','io-base','json-parse', 'json-stringify']});
