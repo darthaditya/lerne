@@ -1,8 +1,8 @@
 <?php require_once('view/header.inc'); ?>  
 <?php
-	//require_once('addfbuser.php');
-	//$fbuser = new fbUser;	
-	//$fbuser->add_user($user_profile);
+	require_once('addfbuser.php');
+	$fbuser = new fbUser;	
+	$fbuser->add_user($user_profile);
 ?>
 <div id="lr_content" class="content">                <div id="lr_add_question">
                     <textarea id="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>

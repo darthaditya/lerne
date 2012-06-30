@@ -11,8 +11,8 @@ Class fbUser {
                 $this->link = $link;
         }
 	function add_user($params){
-                $getuserexistsquery = "select id,username,facebookuserpic,totalamount from users where facebookid=".$params["id"];
-                $getuserid = $this->rs_to_array($getuserexistsquery);
+		$getuserexistsquery = "select id,username,facebookuserpic,totalamount from users where facebookid=".$params["id"];
+		$getuserid = $this->rs_to_array($getuserexistsquery);
 		if(!$getuserid["resultlist"]){
 			$fbuserid = $params["id"];
 			$fbusername = $params["username"];
@@ -28,39 +28,33 @@ Class fbUser {
 			}
 			$getuserexistsquery = "select id,username,facebookuserpic,totalamount from users where facebookid=".$params["id"];
 			$getuserid = $this->rs_to_array($getuserexistsquery);
-			$_SESSION['madaboutm_userid'] = $getuserid["resultlist"][0]["id"];
-			$_SESSION['totalamount'] = $getuserid["resultlist"][0]["totalamount"];
 			$_SESSION['fbuserpic'] = $getuserid["resultlist"][0]["facebookuserpic"];
 			$_SESSION['username'] = $getuserid["resultlist"][0]["username"];
+			$_SESSION['firstname'] = $getuserid["resultlist"][0]["facebookfirstname"];
+			$_SESSION['lastname'] = $getuserid["resultlist"][0]["facebooklastname"];
+			$_SESSION['name'] = $getuserid["resultlist"][0]["facebookfirstname"]." ".$getuserid["resultlist"][0]["facebooklastname"];
 		}else{
-			$_SESSION['madaboutm_userid'] = $getuserid["resultlist"][0]["id"];
-			$_SESSION['totalamount'] = $getuserid["resultlist"][0]["totalamount"];
 			$_SESSION['fbuserpic'] = $getuserid["resultlist"][0]["facebookuserpic"];
 			$_SESSION['username'] = $getuserid["resultlist"][0]["username"];
+			$_SESSION['firstname'] = $getuserid["resultlist"][0]["facebookfirstname"];
+			$_SESSION['lastname'] = $getuserid["resultlist"][0]["facebooklastname"];
+			$_SESSION['name'] = $getuserid["resultlist"][0]["facebookfirstname"]." ".$getuserid["resultlist"][0]["facebooklastname"];
 		}
-		$getfollowercountquery = "select id from user_follow where followid=".$_SESSION['madaboutm_userid'];
-		$getfollowercount = mysql_query($getfollowercountquery,$this->link);
-		$_SESSION['followercount'] = mysql_num_rows($getfollowercount);
-#		if(!$getfollowercount){
-#			$_SESSION['followercount'] = 0;
-#		}else{
-#			$_SESSION['followercount'] = mysql_num_rows($getfollowercount);
-#		}
 		return 1;
-        }
-        function rs_to_array($query){
-                $result = mysql_query($query,$this->link);
-                if (!$result) {
-                    $message  = 'Invalid query: ' . mysql_error() . "\n";
-                    $message .= 'Whole query: ' . $query;
-                    die($message);
-                }
-                $rows = array();
-                while($r = mysql_fetch_assoc($result)) {
-                    $rows[] = $r;
-                }
-                $resultlist[resultlist] = $rows;
-                return $resultlist;
-        }
+	}
+	function rs_to_array($query){
+		$result = mysql_query($query,$this->link);
+		if (!$result) {
+			$message  = 'Invalid query: ' . mysql_error() . "\n";
+			$message .= 'Whole query: ' . $query;
+			die($message);
+		}
+		$rows = array();
+		while($r = mysql_fetch_assoc($result)) {
+			$rows[] = $r;
+		}
+		$resultlist[resultlist] = $rows;
+		return $resultlist;
+	}
 }
 ?>

@@ -17,14 +17,19 @@
 	width:50%;
 	color:#FFFFFF;
 }
-.lr_login_user_name{
+.lr_login_user_info{
 	float:right;
+}
+.lr_login_user_name{
+	float:left;
 	color:#FFFFFF;
 	font-size:12px;
+	margin:0px 10px 0px 0px;
 }
 .lr_login_user_image{
 	height:24px;
 	width:24px;
 	border:1px solid #FFFFFF;
-	float:right;
+	float:left;
+	margin:0px 10px 0px 0px;
 }

@@ -35,6 +35,8 @@ if ($user) {
 <body class="yui-skin-sam">
 <div id="doc2" class="yui-t2">
 	<div id="lr_header" class="header">
-		<div id="lr_login_user_image" class="lr_login_user_image"></div>
-		<div id="lr_login_user_name" class="lr_login_user_name"></div>
+		<div class="lr_login_user_info">
+			<div id="lr_login_user_image" class="lr_login_user_image"><img src="<?php echo $_SESSION['fbuserpic']; ?>"  height="24px" width="24px"/></div>
+			<div id="lr_login_user_name" class="lr_login_user_name"><?php echo $_SESSION['username']; ?></div>
+		</div>
 	</div>
