@@ -9,6 +9,13 @@
 .lr_user_image:hover{
 	box-shadow: 0 0 4px #000000;
 }
+.ls_add_question_text,.ls_add_question_submit{
+	float:left;
+}
+.ls_add_question_text{
+	width:50%;
+	margin:10px 10px 10px 0px;
+}
 .ls_list_questions{
 	float:left;
 	width:60%;

@@ -10,12 +10,17 @@ class getData {
 		mysql_select_db(DB_NAME, $link);
 		$this->link = $link;
 	}
-	function get_questions($params){
+	function get_questions(){
 		$query = 'SELECT * FROM lerne.questions';
 		return $this->rs_to_array($query);
 	}
+	function add_question($params){
+	  $query = "INSERT INTO questions(id, question_text, creator, created) VALUES('', '$params['text']', '$params['fbusername']', 'NOW()')";
+    $result = mysql_query($query,$this->link);
+	}
 	function rs_to_array($query){
 		$result = mysql_query($query,$this->link);
+    $resultlist = array();
 		if (!$result) {
 			$message  = 'Invalid query: ' . mysql_error() . "\n";
 			$message .= 'Whole query: ' . $query;
@@ -25,7 +30,7 @@ class getData {
 		while($r = mysql_fetch_assoc($result)) {
 			$rows[] = $r;
 		}
-		$resultlist[resultlist] = $rows;
+		$resultlist['resultlist'] = $rows;
 		return $resultlist;
 	}
 	function current_user_info(&$totalamount){
@@ -40,3 +45,4 @@ class getData {
 	}
 }
 ?>
+

@@ -15,11 +15,9 @@ YUI().add('lr-question',function(Y){
 		enableSubmit : function(){
 			var text = Y.Lang.trim(Y.one('#ls_add_question_text').get('value'));
 			if (text){
-				Y.one('#ls_add_question_submit_disabled').setStyle('display','none');
 				Y.one('#ls_add_question_submit').setStyle('display','');
 				Y.one('#ls_add_question_text').setAttribute('class','textarea-focused');
 			}else{
-				Y.one('#ls_add_question_submit_disabled').setStyle('display','');
 				Y.one('#ls_add_question_submit').setStyle('display','none');
 				Y.one('#ls_add_question_text').setAttribute('class','');
 			}

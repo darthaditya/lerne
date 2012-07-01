@@ -1,6 +1,13 @@
 <?php
 require_once('../config.php');
 require_once(FILE_ROOT."db/getdata.php");
+require 'fb/facebook.php';
+require_once("fb/fbconfig.php");
+
+$facebook = new Facebook(array(
+  'appId'  => FB_APPID,
+  'secret' => FB_SECRET,
+));
 $action = $_REQUEST['action'];
 $request = new WS;
 
@@ -21,6 +28,9 @@ class WS{
 			case "list":
 				$this->listQuestions();
 				break;
+      case "add":
+        $this->addQuestion();
+        break;
 			default:
 				break;
 
@@ -28,10 +38,20 @@ class WS{
 	}
 	function listQuestions(){
 		$getdata = new getData;
-		$questionlist = $getdata->get_questions($params);
+		$questionlist = $getdata->get_questions();
 		header('Content-Type:application/json');
 		echo json_encode($questionlist);
 	}
+	function addQuestion(){
+    $getdata = new getData;
+    $user = $facebook->getUser();
+    echo $user;
+    die;
+    $params = new array();
+    $params["fbusername"] = $_SESSION["fbusername"]
+    $params["text"] = $_REQUEST["text"];
+    $getdata->add_question($params);
+  }
 	function listStocks(){
 		$getdata = new getData;
 		$params['userid'] = $_REQUEST['userid'];
@@ -56,7 +76,7 @@ class WS{
 		$newsfeed = $getdata->get_news_feed($params);
 		header('Content-Type:application/json');
 		echo json_encode($newsfeed);
-		
+
 	}
 	function searchStocks(){
 		$getdata = new getData;
@@ -96,3 +116,4 @@ class WS{
 
 
 ?>
+
