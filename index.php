@@ -1,12 +1,12 @@
-<?php require_once('view/header.inc'); ?>  
+<?php require_once('view/header.inc'); ?>
 <?php
 	require_once('addfbuser.php');
-	$fbuser = new fbUser;	
+	$fbuser = new fbUser;
 	$fbuser->add_user($user_profile);
 ?>
-<div id="lr_content" class="content">                
+<div id="lr_content" class="content">
 	<div id="lr_add_question" class="lr_add_question">
-		<textarea id="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
+		<textarea name="ls_add_question_text" id="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
 			<a id="ls_add_question_submit" class="button" style="display:none;">Ask!</a>
 			<a id="ls_add_question_submit_disabled" class="button_inactive">Ask!</a>
 		</div>
@@ -41,3 +41,4 @@ YUI().use('lr-question', function (Y) {
 });
 </script>
 <?php require_once('view/footer.inc'); ?>
+
