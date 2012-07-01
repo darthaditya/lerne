@@ -15,7 +15,7 @@ class getData {
 		return $this->rs_to_array($query);
 	}
 	function add_question($params){
-	  $query = "INSERT INTO questions(id, question_text, creator, created) VALUES('', '".$params['text']."', '".$params['userid']."', '".time()."')";
+	  $query = "INSERT INTO questions(id, question_text, subject, tags, creator, created) VALUES('', '".$params['text']."','".$params['subject']."', '".$params['tags']."', '".$params['userid']."', '".time()."')";
     $result = mysql_query($query,$this->link);
 	}
 	function rs_to_array($query){

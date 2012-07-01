@@ -36,7 +36,6 @@
 }
 .ls_list_questions ul li{
 	clear:both;
-	height:70px;
 	background-color:#4891dc;
 	width:96%;
 	color:#FFFFFF;
@@ -71,4 +70,14 @@
 }
 .lr_add_question_tags,.lr_all_subject_list{
 	margin:10px 0px 0px 0px;
+}
+.lr_tag_list{
+	margin-top:10px;
+}
+.lr_tag_item{
+	padding:2px;
+	background-color:#5A5858;
+	margin:4px 2px 0px 0px;
+	font-size:10px;
+	float:left;
 }

@@ -27,7 +27,6 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
-ALTER TABLE  `questions` CHANGE  `created`  `created` BIGINT NOT NULL;
 -- --------------------------------------------------------
 
 --
@@ -50,4 +49,8 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
+-- --------------------------------------------------------
 
+ALTER TABLE  `questions` CHANGE  `created`  `created` BIGINT NOT NULL;
+ALTER TABLE  `questions` ADD  `subject` VARCHAR( 255 ) NOT NULL AFTER  `question_text` ,
+ADD  `tags` TEXT NOT NULL AFTER  `subject`

@@ -46,6 +46,8 @@ class WS{
 		$params = array();
 		$params["text"] = $_REQUEST['text'];
 		$params["userid"] = $_SESSION["userid"];
+		$params["subject"] = $_REQUEST["subject"];
+		$params["tags"] = $_REQUEST["tags"];
 		$questionlist = $getdata->add_question($params);
 		header('Content-Type:application/json');
 		echo json_encode($questionlist);

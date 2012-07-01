@@ -28,8 +28,10 @@ YUI().add('lr-question',function(Y){
 		},
 		addQuestion : function(){
 			var text = Y.Lang.trim(Y.one('#ls_add_question_text').get('value'));
+			var tags = Y.one('#lr_add_question_tags').get('value');
+			var subject = Y.one('#lr_subject_list').get('value');
+			var postdata = "text="+text+"&tags="+tags+"&subject="+subject;
 			var url = "ws/questions_ws.php?action=add";
-			var postdata = "text="+text;
 			var callback = {
 				success:function(id,o,args){
 					Y.one("#ls_list_questions ul").set('innerHTML','Loading Questions...');
@@ -49,7 +51,17 @@ YUI().add('lr-question',function(Y){
 					questionlist = questionlist.resultlist;
 					Y.one("#ls_list_questions ul").set('innerHTML','');
 					for(var i=0;i<questionlist.length;i++){
-						Y.one("#ls_list_questions ul").append('<li><div class="lr_user_image"></div><div class="lr_question_text">'+questionlist[i].question_text+'</div></li>');
+						var tagList = questionlist[i].tags.split(',');
+						var tagSpan = '';
+						for(var j=0;j<tagList.length;j++){
+							if(tagList[j]){
+								tagSpan += '<div class="lr_tag_item">'+tagList[j]+'</div>';
+							}
+						}
+						var listitem = '<li><div class="lr_user_image"></div><div class="lr_question_text">'+questionlist[i].question_text+'</div>'+
+										'<div style="clear:both"></div>'+
+										'<div class="lr_tag_list">'+tagSpan+'</div><div style="clear:both"></li>';
+						Y.one("#ls_list_questions ul").append(listitem);
 					}
 				},
 				failure:function(){
