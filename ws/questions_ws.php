@@ -1,13 +1,7 @@
 <?php
 require_once('../config.php');
 require_once(FILE_ROOT."db/getdata.php");
-require 'fb/facebook.php';
-require_once("fb/fbconfig.php");
 
-$facebook = new Facebook(array(
-  'appId'  => FB_APPID,
-  'secret' => FB_SECRET,
-));
 $action = $_REQUEST['action'];
 $request = new WS;
 
@@ -21,19 +15,24 @@ switch($_SERVER['REQUEST_METHOD']){
 	default:
 		break;
 };
-class WS{
 
+class WS{
 	function get($action){
 		switch($action){
 			case "list":
 				$this->listQuestions();
+			break;
+			default:
+			break;
+		};
+	}
+	function post($action){
+		switch($action){
+			case "add":
+				$this->addQuestion();
 				break;
-      case "add":
-        $this->addQuestion();
-        break;
 			default:
 				break;
-
 		};
 	}
 	function listQuestions(){
@@ -43,15 +42,14 @@ class WS{
 		echo json_encode($questionlist);
 	}
 	function addQuestion(){
-    $getdata = new getData;
-    $user = $facebook->getUser();
-    echo $user;
-    die;
-    $params = new array();
-    $params["fbusername"] = $_SESSION["fbusername"]
-    $params["text"] = $_REQUEST["text"];
-    $getdata->add_question($params);
-  }
+		$getdata = new getData;
+		$params = array();
+		$params["text"] = $_REQUEST['text'];
+		$params["userid"] = $_SESSION["userid"];
+		$questionlist = $getdata->add_question($params);
+		header('Content-Type:application/json');
+		echo json_encode($questionlist);
+	}
 	function listStocks(){
 		$getdata = new getData;
 		$params['userid'] = $_REQUEST['userid'];
@@ -103,17 +101,6 @@ class WS{
 		header('Content-Type:application/json');
 		echo json_encode($addstocks);
 	}
-	function post($action){
-		switch($action){
-			case "list":
-				break;
-			default:
-				break;
-
-		};
-	}
 }
-
-
 ?>
 

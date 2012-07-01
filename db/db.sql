@@ -27,6 +27,7 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
+ALTER TABLE  `questions` CHANGE  `created`  `created` BIGINT NOT NULL;
 -- --------------------------------------------------------
 
 --
@@ -48,4 +49,5 @@ CREATE TABLE `users` (
   `currentgain` float(10,2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
 

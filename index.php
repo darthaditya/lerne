@@ -6,14 +6,10 @@
 ?>
 <div id="lr_content" class="content">
 	<div id="lr_add_question" class="lr_add_question">
-<<<<<<< HEAD
-		<textarea name="ls_add_question_text" id="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
-=======
 		<div class="ls_add_question_text">
 		<textarea id="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
 		</div>
 		<div class="ls_add_question_submit">
->>>>>>> 96aabb4c2c67baff002e403419c4eb7f61d59df4
 			<a id="ls_add_question_submit" class="button" style="display:none;">Ask!</a>
 		</div>
 	</div>

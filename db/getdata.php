@@ -11,11 +11,11 @@ class getData {
 		$this->link = $link;
 	}
 	function get_questions(){
-		$query = 'SELECT * FROM lerne.questions';
+		$query = 'SELECT * FROM lerne.questions order by created desc';
 		return $this->rs_to_array($query);
 	}
 	function add_question($params){
-	  $query = "INSERT INTO questions(id, question_text, creator, created) VALUES('', '$params['text']', '$params['fbusername']', 'NOW()')";
+	  $query = "INSERT INTO questions(id, question_text, creator, created) VALUES('', '".$params['text']."', '".$params['userid']."', '".time()."')";
     $result = mysql_query($query,$this->link);
 	}
 	function rs_to_array($query){
