@@ -30,12 +30,12 @@ body{
     color:#FFFFFF;
     margin:0px 10px 10px 0px;
     padding:6px;
+	border-left:4px solid #5A5858;
 }
 textarea{
-	margin:10px;
 	border:1px solid #ccc;
 	height:32px;
-	width:40%;
+	width:100%;
 	border:1px solid #999999;
     outline:none;
     border-radius:5px;
@@ -81,7 +81,7 @@ li{
 }
 li:hover{
 	cursor:pointer;
-	background-color:#FFFFFF;
+	background-color:#000000;
 	box-shadow:0 0 4px #000000;
 }
 .textarea-focused{
