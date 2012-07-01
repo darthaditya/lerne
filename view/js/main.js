@@ -8,6 +8,8 @@ YUI().add('lr-question',function(Y){
 				privateFunc.listQuestions();
 				Y.on('keyup',privateFunc.enableSubmit,'#ls_add_question_text');
 				Y.on('click',privateFunc.addQuestion,"#ls_add_question_submit");
+				Y.on('click',function(){Y.one('#lr_add_question_form').setStyle('display','block')},'#lr_add_question');
+				Y.on('click',function(){Y.one('#lr_add_question_form').setStyle('display','none')},'#ls_add_question_cancel');
 			},
 	};
 
@@ -16,9 +18,11 @@ YUI().add('lr-question',function(Y){
 			var text = Y.Lang.trim(Y.one('#ls_add_question_text').get('value'));
 			if (text){
 				Y.one('#ls_add_question_submit').setStyle('display','');
+				Y.one('#ls_add_question_submit_disabled').setStyle('display','none');
 				Y.one('#ls_add_question_text').setAttribute('class','textarea-focused');
 			}else{
 				Y.one('#ls_add_question_submit').setStyle('display','none');
+				Y.one('#ls_add_question_submit_disabled').setStyle('display','');
 				Y.one('#ls_add_question_text').setAttribute('class','');
 			}
 		},

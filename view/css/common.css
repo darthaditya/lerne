@@ -33,9 +33,7 @@ body{
 	border-left:4px solid #5A5858;
 }
 textarea{
-	border:1px solid #ccc;
 	height:32px;
-	width:100%;
 	border:1px solid #999999;
     outline:none;
     border-radius:5px;
@@ -51,13 +49,31 @@ textarea:focus{
     -webkit-box-shadow:0 0 5px #7dbef1;
 	height:64px;
 }
+.textbox{
+	border:1px solid #999999;
+    outline:none;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+	font-size:16px;
+	padding:4px;
+}
+.textbox:focus{
+	border:1px solid #7dbef1;
+	box-shadow:0 0 5px #7dbef1;
+    -moz-box-shadow:0 0 5px #7dbef1;
+    -webkit-box-shadow:0 0 5px #7dbef1;
+}
+select{
+	font-size:16px;
+}
 .button,.button_inactive {
 	height:auto;
-	width:auto;
-	padding:9px;
+	width:80px;
+	padding:9px 0px;
 	font-size:14px;
 	cursor:pointer;
-	margin:10px;
+	margin:10px 10px 10px 0px;
 	font-weight:bold;
 	text-decoration:none;
 	display:block;
@@ -77,6 +93,17 @@ textarea:focus{
 .button:active{
 	box-shadow:0 2px 4px #000000 inset;
 }
+.button_action {
+    color:#FFFFFF;
+    padding:3px;
+    background-color:#CD4900;
+    cursor:pointer;
+	margin-bottom:2px;
+}
+.form{
+	padding:6px;
+	margin:10px 0px 10px 0px;	
+}
 li{
 	padding:10px;
 	font-size:14px;
@@ -88,4 +115,7 @@ li:hover{
 }
 .textarea-focused{
 	height: 64px;
+}
+.float-left{
+	float:left;
 }

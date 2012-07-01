@@ -62,3 +62,9 @@
 	float:left;
 	margin:0px 10px 0px 0px;
 }
+.lr_add_question{
+	margin:0px 0px 10px 0px;
+}
+.lr_add_question_tags,.lr_all_subject_list{
+	margin:10px 0px 0px 0px;
+}
