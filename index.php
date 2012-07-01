@@ -1,7 +1,9 @@
-<?php require_once('view/header.inc'); ?>
+<?php 
+	require_once('config.php');
+	require_once(FILE_ROOT.'view/header.inc'); ?>
 <?php
-	require_once('addfbuser.php');
-	require_once('data.ini');
+	require_once(FILE_ROOT.'addfbuser.php');
+	require_once(FILE_ROOT.'data.ini');
 	$fbuser = new fbUser;
 	$fbuser->add_user($user_profile);
 ?>
@@ -59,5 +61,5 @@ YUI().use('lr-question', function (Y) {
     Y.one('#ls_add_question_text').set('value','Got a question?')
 });
 </script>
-<?php require_once('view/footer.inc'); ?>
+<?php require_once(FILE_ROOT.'view/footer.inc'); ?>
 

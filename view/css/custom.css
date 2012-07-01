@@ -42,12 +42,14 @@
 	opacity:1.0;
 	margin:0px 0px 6px 0px;
 }
-.ls_list_questions ul .lr_question_list_content:hover{
+.ls_list_questions ul .lr_question_list_content a{
+	text-decoration:none;
 }
 .ls_list_questions ul .lr_question_list_content .lr_question_answer_link{
 	display:none;
 	font-size:12px;
 	padding-left:0px;
+	color:#FFFFFF;
 }
 .ls_list_questions ul .lr_question_list_content:hover .lr_question_answer_link{
 	display:inline;
@@ -95,4 +97,15 @@
 	margin:4px 2px 0px 0px;
 	font-size:10px;
 	display:inline;
+}
+
+/***************************************
+question/index.php
+***************************************/
+.lr_question_info{
+	width:100%;
+	padding:10px;
+	margin:10px 0px 10px 0px;
+	height:auto;
+	background-color:#4891DC;
 }

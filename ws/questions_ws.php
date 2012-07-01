@@ -7,29 +7,32 @@ $request = new WS;
 
 switch($_SERVER['REQUEST_METHOD']){
 	case "GET":
-		$request->get($action);
+		$request->get($action,$_REQUEST);
 		break;
 	case "POST":
-		$request->post($action);
+		$request->post($action,$_REQUEST);
 		break;
 	default:
 		break;
 };
 
 class WS{
-	function get($action){
+	function get($action,$_REQUEST){
 		switch($action){
 			case "list":
-				$this->listQuestions();
+				$this->listQuestions($_REQUEST);
+			break;
+			case "questioninfo":
+					$this->questionInfo($_REQUEST);
 			break;
 			default:
 			break;
 		};
 	}
-	function post($action){
+	function post($action,$_REQUEST){
 		switch($action){
 			case "add":
-				$this->addQuestion();
+				$this->addQuestion($_REQUEST);
 				break;
 			default:
 				break;
@@ -41,67 +44,21 @@ class WS{
 		header('Content-Type:application/json');
 		echo json_encode($questionlist);
 	}
-	function addQuestion(){
+	function addQuestion($params){
 		$getdata = new getData;
-		$params = array();
-		$params["text"] = $_REQUEST['text'];
-		$params["userid"] = $_SESSION["userid"];
-		$params["subject"] = $_REQUEST["subject"];
-		$params["tags"] = $_REQUEST["tags"];
 		$questionlist = $getdata->add_question($params);
 		header('Content-Type:application/json');
 		echo json_encode($questionlist);
 	}
-	function listStocks(){
-		$getdata = new getData;
-		$params['userid'] = $_REQUEST['userid'];
-		$stocklist = $getdata->get_user_stocks($params);
-		$stocklist = json_decode($stocklist);
-		$overallhash = array();
-		$overallhash['previousDayValue'] = $stocklist->previousDayValue;
-		$overallhash['currentValue'] = $stocklist->currentValue;# + $_SESSION[totalamount];
-		$overallhash['change'] = $stocklist->change;
-		$overallhash['changePercent'] = $stocklist->changePercent;
-		$overallhash['gain'] = $stocklist->gain;
-		$overallhash['gainPercent'] = $stocklist->gainPercent;
-
-		$stocklist->overall = $overallhash;
-		$stocklist = json_encode($stocklist);
-		header('Content-Type:application/json');
-		echo $stocklist;
-	}
-	function getNewsFeed(){
-		$getdata = new getData;
-		$params['pagenumber'] = $_REQUEST['pagenumber'];
-		$newsfeed = $getdata->get_news_feed($params);
-		header('Content-Type:application/json');
-		echo json_encode($newsfeed);
-
-	}
-	function searchStocks(){
-		$getdata = new getData;
-		$params['searchquery'] = $_REQUEST['q'];
-		$searchstocks = $getdata->search_stocks($params);
-		header('Content-Type:application/json');
-		echo json_encode($searchstocks);
-	}
-	function addStock(){
-		$getdata = new getData;
-		$params['userid'] = $_SESSION["madaboutm_userid"];
-		$params['stocksymbol'] = $_REQUEST['symbol'];
-		$params['quantity'] = $_REQUEST['quantity'];
-		$addstocks = $getdata->add_stocks($params);
-		header('Content-Type:application/json');
-		echo json_encode($addstocks);
-	}
-	function sellStock(){
-		$getdata = new getData;
-		$params['userid'] = $_SESSION["madaboutm_userid"];
-		$params['stocksymbol'] = $_REQUEST['symbol'];
-		$params['quantity'] = $_REQUEST['quantity'];
-		$addstocks = $getdata->sell_stocks($params);
-		header('Content-Type:application/json');
-		echo json_encode($addstocks);
+	function questionInfo($params,$returnflag){
+		$getdata = new getData();
+		$questioninfo = $getdata->get_question_info($params);
+		if($returnflag){
+			return $questioninfo;
+		}else{
+			header('Content-Type:application/json');
+			echo json_encode($questioninfo);
+		}
 	}
 }
 ?>

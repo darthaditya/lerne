@@ -1,6 +1,6 @@
 <?php
-require 'fb/facebook.php';
-require_once("fb/fbconfig.php");
+require FILE_ROOT.'view/fb/facebook.php';
+require_once(FILE_ROOT."view/fb/fbconfig.php");
 
 $facebook = new Facebook(array(
   'appId'  => FB_APPID,
@@ -30,7 +30,7 @@ if ($user) {
 <html>
 <head>
    <title>Lerne</title>
-   <?php require_once('css.inc'); ?>
+   <?php require_once(FILE_ROOT.'view/css.inc'); ?>
 </head>
 <body class="yui-skin-sam">
 <div id="doc2" class="yui-t2">
