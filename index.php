@@ -39,12 +39,12 @@
 		<div id="lr_subject_list" class="lr_subject_list">
 			<div id="lr_user_subscriptions" class="title">My Subjects</div>
 			<ul>
-				<li>Subject 1</li>
-				<li>Subject 1</li>
-				<li>Subject 1</li>
-				<li>Subject 1</li>
-				<li>Subject 1</li>
-				<li>Subject 1</li>
+			<?php
+				$subject = explode(',',SUBJECT_LIST);
+				foreach($subject as $value){
+					echo '<li>'.$value.'</li>';
+				}
+			?>
 			</ul>
 		</div>
 	</div>
