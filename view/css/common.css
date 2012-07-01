@@ -16,7 +16,6 @@ body{
 .footer{
 	height:20px;
 	width:100%;
-	background-color:#000;
 }
 .content{
 	width:972px; 
@@ -24,6 +23,13 @@ body{
 	margin-right:auto;
 	min-height:600px;
 	padding: 50px 0 0 0;
+}
+.title{
+	width:100%;
+    background-color:#383737;
+    color:#FFFFFF;
+    margin:0px 10px 10px 0px;
+    padding:6px;
 }
 textarea{
 	margin:10px;
@@ -71,7 +77,6 @@ textarea:focus{
 }
 li{
 	padding:10px;
-	margin:6px;
 	font-size:14px;
 }
 li:hover{
