@@ -55,12 +55,13 @@ YUI().add('lr-question',function(Y){
 						var tagSpan = '';
 						for(var j=0;j<tagList.length;j++){
 							if(tagList[j]){
-								tagSpan += '<div class="lr_tag_item">'+tagList[j]+'</div>';
+								tagSpan += '<li class="lr_tag_item">'+tagList[j]+'</li> ';
 							}
 						}
-						var listitem = '<li><div class="lr_user_image"></div><div class="lr_question_text">'+questionlist[i].question_text+'</div>'+
+						var listitem = '<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+questionlist[i].question_text+'</div>'+
+										'<ul><li class="lr_question_answer_link">Answer this question</li></ul>'+
 										'<div style="clear:both"></div>'+
-										'<div class="lr_tag_list">'+tagSpan+'</div><div style="clear:both"></li>';
+										'<ul class="lr_tag_list">'+tagSpan+'</ul><div style="clear:both"></li>';
 						Y.one("#ls_list_questions ul").append(listitem);
 					}
 				},
