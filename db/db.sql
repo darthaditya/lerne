@@ -54,3 +54,12 @@ CREATE TABLE `users` (
 ALTER TABLE  `questions` CHANGE  `created`  `created` BIGINT NOT NULL;
 ALTER TABLE  `questions` ADD  `subject` VARCHAR( 255 ) NOT NULL AFTER  `question_text` ,
 ADD  `tags` TEXT NOT NULL AFTER  `subject`
+
+CREATE TABLE  `lerne`.`answers` (
+`id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`answer_text` TEXT NOT NULL ,
+`question_id` BIGINT NOT NULL ,
+`creator` BIGINT NOT NULL ,
+`created` BIGINT NOT NULL ,
+`votes` BIGINT NOT NULL DEFAULT  '0'
+) ENGINE = INNODB;

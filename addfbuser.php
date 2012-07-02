@@ -33,12 +33,14 @@ Class fbUser {
 			$_SESSION['firstname'] = $getuserid["resultlist"][0]["facebookfirstname"];
 			$_SESSION['lastname'] = $getuserid["resultlist"][0]["facebooklastname"];
 			$_SESSION['name'] = $getuserid["resultlist"][0]["facebookfirstname"]." ".$getuserid["resultlist"][0]["facebooklastname"];
+			$_SESSION['userid'] = $getuserid["resultlist"][0]["id"];
 		}else{
 			$_SESSION['fbuserpic'] = $getuserid["resultlist"][0]["facebookuserpic"];
 			$_SESSION['username'] = $getuserid["resultlist"][0]["username"];
 			$_SESSION['firstname'] = $getuserid["resultlist"][0]["facebookfirstname"];
 			$_SESSION['lastname'] = $getuserid["resultlist"][0]["facebooklastname"];
 			$_SESSION['name'] = $getuserid["resultlist"][0]["facebookfirstname"]." ".$getuserid["resultlist"][0]["facebooklastname"];
+			$_SESSION['userid'] = $getuserid["resultlist"][0]["id"];
 		}
 		return 1;
 	}

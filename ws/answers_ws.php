@@ -1,6 +1,6 @@
 <?php
 require_once('../config.php');
-require_once(FILE_ROOT."db/question/getdata.php");
+require_once(FILE_ROOT."db/answer/getdata.php");
 
 $action = $_REQUEST['action'];
 $request = new WS;
@@ -20,10 +20,10 @@ class WS{
 	function get($action,$_REQUEST){
 		switch($action){
 			case "list":
-				$this->listQuestions($_REQUEST);
+				$this->listAnswers($_REQUEST);
 			break;
 			case "questioninfo":
-					$this->questionInfo($_REQUEST);
+					$this->answerInfo($_REQUEST);
 			break;
 			default:
 			break;
@@ -32,24 +32,24 @@ class WS{
 	function post($action,$_REQUEST){
 		switch($action){
 			case "add":
-				$this->addQuestion($_REQUEST);
+				$this->addAnswer($_REQUEST);
 				break;
 			default:
 				break;
 		};
 	}
-	function listQuestions(){
+	function listAnswers(){
 		$getdata = new getData;
-		$questionlist = $getdata->get_questions();
+		$answerlist = $getdata->get_answers();
 		header('Content-Type:application/json');
-		echo json_encode($questionlist);
+		echo json_encode($answerlist);
 	}
-	function addQuestion($params){
+	function addAnswer($params){
 		$getdata = new getData;
 		$params['userid'] = $_SESSION["userid"];
-		$questionlist = $getdata->add_question($params);
+		$answer = $getdata->add_answer($params);
 		header('Content-Type:application/json');
-		echo json_encode($questionlist);
+		echo json_encode($answer);
 	}
 	function questionInfo($params,$returnflag){
 		$getdata = new getData();

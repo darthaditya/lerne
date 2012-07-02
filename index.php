@@ -52,7 +52,7 @@
 	</div>
 	<div style="clear:both"></div>
 <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
-<script type="text/javascript" src="view/js/main.js"></script>
+<script type="text/javascript" src="<?php echo APP_ROOT."/view/js/questions/main.js" ?>"></script>
 <script type="text/javascript">
 YUI().use('lr-question', function (Y) {
     Y.LrQuestion.init();

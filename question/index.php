@@ -17,23 +17,31 @@
 		echo $questioninfo['resultlist'][0]['question_text'];
 	?>
 	</div>		
+	<div id="lr_list_answers" class="ls_list_questions">
+		<ul>
+		</ul>
+	</div>
+	<div style="clear:both"></div>
 	<div class="lr_add_answer"><a id="lr_add_question" class="button_action">Add Answer</a></div>
 	<div style="clear:both"></div>
-	<div id="lr_add_question_form" class="form lr_add_question_form" style="display:none;">
-		<textarea id="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="68" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
+	<div id="lr_add_question_form" class="form lr_add_question_form">
+		<textarea id="lr_add_answer_text" onfocus="if(this.value == 'Answer here') {this.value=''}" cols="68" onblur="if(this.value == ''){this.value ='Answer here'}">Answer here</textarea>
 		<br />
 		<br />
-		<input type="text" id="lr_add_question_tags"  value="Enter Tags" class="textbox lr_add_question_tags" onfocus="if(this.value == 'Enter Tags') {this.value=''}" onblur="if(this.value == ''){this.value ='Enter Tags'}" size="57"/>
+		<input type="hidden" value="<?php echo $_REQUEST['id']; ?>" id="lr_question_id"/>
 		<div>
-			<a id="ls_add_question_submit" class="button float-left" style="display:none;">Ask!</a>
-			<a id="ls_add_question_submit_disabled" class="button_inactive float-left">Ask!</a>
-			<a id="ls_add_question_cancel" class="button float-left">Cancel</a>
+			<a id="lr_add_answer_submit" class="button float-left" style="display:none;">Answer!</a>
+			<a id="lr_add_answer_submit_disabled" class="button_inactive float-left">Answer!</a>
 		</div>
 		<div style="clear:both"></div>
 	</div>
-
+<?php require_once(FILE_ROOT.'view/js/constants.php'); ?>
 <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
-<script type="text/javascript" src="/view/js/main.js"></script>
+<script type="text/javascript" src="<?php echo APP_ROOT."/view/js/answers/main.js" ?>"></script>
 <script type="text/javascript">
+YUI().use('lr-answer', function (Y) {
+    Y.LrAnswer.init();
+    Y.one('#lr_add_answer_text').set('value','Answer here')
+});	
 </script>
 <?php require_once(FILE_ROOT.'view/footer.inc'); ?>
