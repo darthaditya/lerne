@@ -2,7 +2,7 @@
 html,body{
 }
 body{
-	background-image:url('dark_geometric.png');
+	background-color:#F1F1F1;
 	repeat-x;
 	repeat-y;
 	font-family: 'Open Sans',"lucida grande", sans-serif,tahoma,verdana,arial,sans-serif;
@@ -12,6 +12,7 @@ body{
 	width:100%;
 	background-color:#000;
 	position:fixed;
+	z-index:999999999;
 }
 .footer{
 	height:20px;
@@ -93,10 +94,6 @@ textarea:focus, .textbox:focus, select:focus{
 .form{
 	padding:6px;
 	margin:10px 0px 10px 0px;	
-}
-li{
-	padding:10px;
-	font-size:14px;
 }
 .textarea-focused{
 	height: 64px;
