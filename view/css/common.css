@@ -36,36 +36,27 @@ textarea{
 	height:32px;
 	border:1px solid #999999;
     outline:none;
-    border-radius:5px;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
     padding:5px;
 	font-family: 'Open Sans', sans-serif,"lucida grande",tahoma,verdana,arial,sans-serif;
 }
-textarea:focus{
-	border:1px solid #7dbef1;
-	box-shadow:0 0 5px #7dbef1;
-    -moz-box-shadow:0 0 5px #7dbef1;
-    -webkit-box-shadow:0 0 5px #7dbef1;
+.textarea:focus{
 	height:64px;
 }
 .textbox{
 	border:1px solid #999999;
     outline:none;
-    border-radius:5px;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
 	font-size:16px;
 	padding:4px;
 }
-.textbox:focus{
-	border:1px solid #7dbef1;
-	box-shadow:0 0 5px #7dbef1;
-    -moz-box-shadow:0 0 5px #7dbef1;
-    -webkit-box-shadow:0 0 5px #7dbef1;
-}
 select{
+	border:1px solid #999999;
 	font-size:16px;
+}
+textarea:focus, .textbox:focus, select:focus{
+	border:1px solid #CD4900;
+	box-shadow:0 0 5px #CD4900;
+    -moz-box-shadow:0 0 5px #CD4900;
+    -webkit-box-shadow:0 0 5px #CD4900;
 }
 .button,.button_inactive {
 	height:auto;
@@ -78,8 +69,7 @@ select{
 	text-decoration:none;
 	display:block;
 	text-align:center;
-	border:1px solid #cccccc;
-	border-radius:5px;
+	border-left:2px solid #CD4900;
 	background-color:#CCC;
 }
 .button_inactive{
