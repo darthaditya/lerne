@@ -8,7 +8,7 @@ body{
 	font-family: 'Open Sans',"lucida grande", sans-serif,tahoma,verdana,arial,sans-serif;
 }
 .header{
-	height:30px;
+	height:44px;
 	width:100%;
 	background-color:#2D2D2D;
 	position:fixed;
@@ -27,7 +27,7 @@ body{
 	margin-left:auto;
 	margin-right:auto;
 	min-height:600px;
-	padding: 50px 0 0 0;
+	padding: 60px 0 0 0;
 }
 .title{
 	width:100%;

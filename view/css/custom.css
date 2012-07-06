@@ -10,6 +10,11 @@
 	box-shadow: 0 0 1px #000000;
 	cursor:pointer;
 }
+.lr_logout a, .lr_login_user_name{
+	text-decoration:none;
+	color:#FFFFFF;
+	font-size:12px;
+}
 .ls_add_question_text,.ls_add_question_submit{
 	float:left;
 }
@@ -29,10 +34,12 @@
 .lr_subject_list ul li{
 	height:114px;
 	width:114px;
-	background-color:#4891dc;
+	background-color:#FAF7F7;
 	margin: 0px 10px 10px 0px;
 	float:left;
 	padding:10px;
+	box-shadow:inset 0 1px white, 0 1px 3px rgba(34, 25, 25, 0.4);
+	-webkit-box-shadow:inset 0 1px white, 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 .ls_list_questions ul{
 }
@@ -68,11 +75,10 @@
 }
 .lr_login_user_info{
 	float:right;
+	margin:8px 0px 0px 0px;
 }
 .lr_login_user_name{
 	float:left;
-	color:#FFFFFF;
-	font-size:12px;
 	margin:0px 10px 0px 0px;
 }
 .lr_login_user_image{
