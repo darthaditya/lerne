@@ -1,4 +1,4 @@
-<?php 
+<?php  
 	require_once('config.php');
 	require_once(FILE_ROOT.'view/header.inc'); ?>
 <?php
@@ -11,19 +11,23 @@
 	<div class="lr_add_question"><a id="lr_add_question" class="button_action">Add Question</a></div>
 	<div style="clear:both"></div>
 	<div id="lr_add_question_form" class="form lr_add_question_form" style="display:none;">
-		<textarea id="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="68" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
-		<br />
-		<select id="lr_subject_list" class="lr_all_subject_list">
-			<?php
-				$subject = explode(',',SUBJECT_LIST);
-				foreach($subject as $value){
-					echo '<option>'.$value.'</option>';
-				}
-			?>
-		</select>
-		<br />
-		<input type="text" id="lr_add_question_tags"  value="Enter Tags" class="textbox lr_add_question_tags" onfocus="if(this.value == 'Enter Tags') {this.value=''}" onblur="if(this.value == ''){this.value ='Enter Tags'}" size="57"/>
-		<div>
+		<div class="ls_add_question_text_div">
+		<textarea id="ls_add_question_text"  "ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="54" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
+		</div>
+		<div class="lr_all_subject_list_div">
+			<select id="lr_subject_list" class="lr_all_subject_list">
+				<?php
+					$subject = explode(',',SUBJECT_LIST);
+					foreach($subject as $value){
+						echo '<option>'.$value.'</option>';
+					}
+				?>
+			</select>
+		</div>
+		<div class="lr_add_question_tags_div">
+			<input type="text" id="lr_add_question_tags"  value="Enter Tags" class="textbox lr_add_question_tags" onfocus="if(this.value == 'Enter Tags') {this.value=''}" onblur="if(this.value == ''){this.value ='Enter Tags'}" size="57"/>
+		</div>
+		<div class="lr_add_question_buttons_div">
 			<a id="ls_add_question_submit" class="button float-left" style="display:none;">Ask!</a>
 			<a id="ls_add_question_submit_disabled" class="button_inactive float-left">Ask!</a>
 			<a id="ls_add_question_cancel" class="button float-left">Cancel</a>

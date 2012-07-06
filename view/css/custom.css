@@ -89,6 +89,10 @@
 	margin:0px 0px 10px 0px;
 	border-left: 4px solid #CD4900;
 }
+.lr_add_question_tags_div,.lr_all_subject_list_div,.ls_add_question_text_div,.lr_add_question_buttons_div{
+	margin:10px 0px 10px 10px;
+	width:100%;
+}
 /***************************************
 tags
 ***************************************/
