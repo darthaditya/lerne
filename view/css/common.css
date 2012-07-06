@@ -3,6 +3,7 @@ html,body{
 }
 body{
 	background-color:#F1F1F1;
+	background:url('../img/bgnoise.gif');
 	repeat-x;
 	repeat-y;
 	font-family: 'Open Sans',"lucida grande", sans-serif,tahoma,verdana,arial,sans-serif;
