@@ -28,6 +28,7 @@
 .lr_subject_list ul li{
 	height:114px;
 	width:114px;
+	color:#FFFFFF;
 	background-color:#4891dc;
 	margin: 0px 10px 10px 0px;
 	float:left;
@@ -87,6 +88,7 @@
 }
 .lr_add_question_tags,.lr_all_subject_list{
 	margin:10px 0px 0px 0px;
+
 }
 .ls_list_questions .lr_tag_list{
 	margin-top:10px;
