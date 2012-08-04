@@ -9,8 +9,8 @@ class getData {
 		mysql_select_db(DB_NAME, $link);
 		$this->link = $link;
 	}
-	function get_answers(){
-		$query = 'SELECT * FROM '.DB_NAME.'.answers order by votes desc';
+	function get_answers($params){
+		$query = 'SELECT * FROM '.DB_NAME.'.answers where questionid = '.$params['questionid'].' order by votes desc';
 		return $this->rs_to_array($query);
 	}
 	function add_answer($params){
