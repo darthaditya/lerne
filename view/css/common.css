@@ -24,11 +24,11 @@ body{
 	width:100%;
 }
 .content{
-	width:972px; 
+	width:972px;
 	margin-left:auto;
 	margin-right:auto;
 	min-height:600px;
-	padding: 50px 0 0 0;
+	padding: 60px 0 0 0;
 }
 .title{
 	width:100%;
@@ -91,15 +91,16 @@ textarea:focus, .textbox:focus, select:focus{
 	box-shadow:0 2px 4px #000000 inset;
 }
 .button_action {
-    color:#FFFFFF;
-    padding:3px;
-    background-color:#CD4900;
-    cursor:pointer;
+	color:#FFFFFF;
+	padding:3px;
+	background-color:#CD4900;
+	cursor:pointer;
 	margin-bottom:2px;
+	margin-top:8px;
 }
 .form{
 	padding:6px;
-	margin:10px 0px 10px 0px;	
+	margin:10px 0px 10px 0px;
 }
 li{
 	padding:10px;
@@ -111,3 +112,4 @@ li{
 .float-left{
 	float:left;
 }
+
