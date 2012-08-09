@@ -20,7 +20,7 @@ if ($user) {
 
 if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
-  $_SESSION['madaboutm_userid'] = "";
+  $_SESSION['lerne_userid'] = "";
   $_SESSION['totalamount'] = "";
   $_SESSION['fbuserpic'] = "";
   $_SESSION['username'] = "";
