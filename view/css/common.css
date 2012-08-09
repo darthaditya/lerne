@@ -8,13 +8,19 @@ body{
 	font-family: 'Open Sans',"lucida grande", sans-serif,tahoma,verdana,arial,sans-serif;
 }
 .header{
-	height:30px;
+	height:44px;
 	width:100%;
-	background-color:#000;
+	background-color:#2D2D2D;
 	position:fixed;
+	z-index:999999999;
+	border-bottom:1px solid #4891DC;
+	box-shadow:0 2px 2px -2px #CD4900;
+	-moz-box-shadow:0 2px 2px -2px #CD4900;
+	-webkit-box-shadow:0 2px 2px -2px #CD4900;
 }
 .footer{
 	height:20px;
+	background-color:#2D2D2D;
 	width:100%;
 }
 .content{
@@ -35,9 +41,10 @@ body{
 textarea{
 	height:32px;
 	border:1px solid #999999;
-    outline:none;
-    padding:5px;
+	outline:none;
+	padding:5px;
 	font-family: 'Open Sans', sans-serif,"lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size:16px;
 }
 .textarea:focus{
 	height:64px;
