@@ -59,7 +59,10 @@ if ($user) {
          }(document));
 			</script>
 <div class="fb-login-button">Login with Facebook</div>
-<!--
+
+<!-- Still need to make the login functionality redirect to index.php -->
+
+<!-- # This will enable user registration with FB
       <div 
         class="fb-registration" 
         data-fields="[{'name':'name'}, {'name':'email'},
