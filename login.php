@@ -58,14 +58,17 @@ if ($user) {
            ref.parentNode.insertBefore(js, ref);
          }(document));
       </script>
+<div class="fb-login-button">Login with Facebook</div>
 
+<!-- # This is for adding FB registration #
       <div 
         class="fb-registration" 
         data-fields="[{'name':'name'}, {'name':'email'},
           {'name':'favorite_car','description':'What is your favorite car?',
             'type':'text'}]" 
         data-redirect-uri='FB_REDIRECTLOGIN'
-      </div>
+			</div>
+-->
   </script>
 
 <div id="doc2" class="yui-t2">
