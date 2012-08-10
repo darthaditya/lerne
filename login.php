@@ -57,15 +57,17 @@ if ($user) {
            js.src = "//connect.facebook.net/en_US/all.js";
            ref.parentNode.insertBefore(js, ref);
          }(document));
-      </script>
-
+			</script>
+<div class="fb-login-button">Login with Facebook</div>
+<!--
       <div 
         class="fb-registration" 
         data-fields="[{'name':'name'}, {'name':'email'},
           {'name':'favorite_car','description':'What is your favorite car?',
             'type':'text'}]" 
         data-redirect-uri='FB_REDIRECTLOGIN'>
-      </div>
+			</div>
+-->
  <div id="doc2" class="yui-t2">
         <div id="leftheader">
            <a href="index.php"><div id="hd" role="banner">
