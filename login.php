@@ -34,7 +34,7 @@ if ($user) {
  "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-   <title>YUI Base Page</title>
+   <title>Welcome to Lern!</title>
    <?php require_once('view/css.inc'); ?>
 </head>
 <body class="yui-skin-sam">
