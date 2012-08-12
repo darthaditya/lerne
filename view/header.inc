@@ -37,6 +37,7 @@ if ($user) {
 	<div id="lr_header" class="header">
 		<div class="lr_login_user_info">
 			<div id="lr_login_user_image" class="lr_login_user_image"><img src="<?php echo $_SESSION['fbuserpic']; ?>"  height="32px" width="32px"/></div>
-			<div id="lr_login_user_name" class="lr_login_user_name"><?php echo $_SESSION['username']; ?></div>
+      <div id="lr_login_user_name" class="lr_login_user_name"><?php echo $_SESSION['username']; ?></div>
+      <div id="lr_logout" class="lr_logout"><a href="<?php echo $logoutUrl; ?>">Logout</a></div>
 		</div>
 	</div>

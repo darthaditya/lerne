@@ -111,3 +111,16 @@ question/index.php
 	height:auto;
 	background-color:#4891DC;
 }
+
+/********************************
+ * Header logout URL
+ * *****************************/
+.lr_logout a, .lr_login_user_name{
+  text-decoration:none;
+  color:#FFFFFF;
+  font-size:12px;
+}
+
+.lr_logout a:hover{
+  text-decoration:underline;
+}
