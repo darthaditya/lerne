@@ -1,6 +1,6 @@
 .DS_Store
-.sw*
+*.sw*
 *~
-.so*
+*.so*
 config.php
 fbconfig.php
