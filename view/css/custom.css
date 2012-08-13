@@ -26,8 +26,8 @@
 	margin-left:30px;
 }
 .lr_subject_list ul li{
-	height:114px;
-	width:114px;
+	height:113px;
+	width:113px;
 	color:#FFFFFF;
 	background-color:#4891dc;
 	margin: 0px 10px 10px 0px;
@@ -38,7 +38,7 @@
 .ls_list_questions ul .lr_question_list_content{
 	clear:both;
 	background-color:#4891dc;
-	width:96%;
+	width:89.2%;
 	color:#FFFFFF;
 	opacity:1.0;
 	margin:0px 0px 6px 0px;
