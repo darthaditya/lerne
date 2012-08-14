@@ -95,7 +95,7 @@
 	float:left;
 	margin:0px 10px 0px 0px;
 }
-.lr_add_question{
+.lr_add_question,.lr_add_answer{
 	margin:0px 0px 10px 0px;
 }
 .lr_add_question_form{
@@ -177,5 +177,5 @@ question/index.php
 	padding:10px;
 	margin:10px 0px 10px 0px;
 	height:auto;
-	background-color:#4891DC;
+	border-left:4px solid #5A5858;
 }
