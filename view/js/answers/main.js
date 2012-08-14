@@ -39,6 +39,8 @@ YUI().add('lr-answer',function(Y){
 		},
 		listAnswers: function(){
 			var url = LrConstants.approot+"ws/answers_ws.php?action=list";
+			var questionid = Y.one('#lr_question_text').getAttribute('questionid');
+			var postdata = "questionid="+questionid;
 			var callback = {
 				success:function(data) {
 					var answerlist = JSON.parse(data.responseText);
@@ -53,7 +55,7 @@ YUI().add('lr-answer',function(Y){
 				failure:function(){
 				}
 			};
-			var request = YAHOO.util.Connect.asyncRequest('GET', url, callback);
+			var request = YAHOO.util.Connect.asyncRequest('POST', url, callback, postdata);
 		}
 	};
 }, '0.0.1', {requires: ['node','io', 'json-parse','yui2-connection']});
