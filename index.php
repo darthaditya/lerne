@@ -56,13 +56,19 @@
 	</div>
 	<div style="clear:both"></div>
 <script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
-<script type="text/javascript" src="<?php echo APP_ROOT."/view/js/questions/main.js" ?>"></script>
+<script type="text/javascript" src="<?php echo APP_ROOT."/view/js/questions/main_jq.js" ?>"></script>
 <script type="text/javascript">
-YUI().use('lr-question', function (Y) {
-    Y.LrQuestion.init();
-    var d = new Date();
-    Y.Cookie.set("userid", d.getSeconds());
-    Y.one('#ls_add_question_text').set('value','Got a question?')
+//YUI().use('lr-question', function (Y) {
+//    Y.LrQuestion.init();
+//    var d = new Date();
+//    Y.Cookie.set("userid", d.getSeconds());
+//    Y.one('#ls_add_question_text').set('value','Got a question?')
+//});
+$(document).ready(function(){
+	var question = new Question();
+	question.init();
+	var d = new Date();
+	$('#ls_add_question_text').attr('value','Got a question?');
 });
 </script>
 <?php require_once(FILE_ROOT.'view/footer.inc'); ?>

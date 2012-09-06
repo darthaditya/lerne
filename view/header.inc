@@ -29,8 +29,9 @@ if ($user) {
  "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-   <title>Lerne</title>
-   <?php require_once(FILE_ROOT.'view/css.inc'); ?>
+	<title>Lerne</title>
+	<?php require_once(FILE_ROOT.'view/css.inc'); ?>
+	<script type="text/javascript" src="view/js/jquery-1.8.1.min.js"></script>
 </head>
 <body class="yui-skin-sam">
 <div id="doc2" class="yui-t2">
