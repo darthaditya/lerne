@@ -3,5 +3,5 @@
 *.so*
 *.diff
 *~
-config.php
+./config.php
 fbconfig.php
