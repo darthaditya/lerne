@@ -38,7 +38,7 @@ if ($user) {
    <?php require_once('view/css.inc'); ?>
 </head>
 <body class="yui-skin-sam">
-<div id="fb-root"></div>
+  <div id="fb-root"></div>
       <script>
         window.fbAsyncInit = function() {
           FB.init({

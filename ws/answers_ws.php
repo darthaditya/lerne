@@ -38,9 +38,9 @@ class WS{
 				break;
 		};
 	}
-	function listAnswers(){
+	function listAnswers($params){
 		$getdata = new getData;
-		$answerlist = $getdata->get_answers();
+		$answerlist = $getdata->get_answers($params);
 		header('Content-Type:application/json');
 		echo json_encode($answerlist);
 	}

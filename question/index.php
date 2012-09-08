@@ -8,12 +8,12 @@
 	$fbuser = new fbUser;
 	$fbuser->add_user($user_profile);
 	require_once(FILE_ROOT.'/ws/questions_ws.php');
+	$request = new WS;
+	$questioninfo = $request->questionInfo($_REQUEST,'1');
 ?>
 <div id="lr_content" class="content">
-	<div id="lr_question_text" class="lr_question_info">
+<div id="lr_question_text" class="lr_question_info" questionid="<?php echo $questioninfo['resultlist'][0]['id']?>">
 	<?php
-		$request = new WS;
-		$questioninfo = $request->questionInfo($_REQUEST,'1');
 		echo $questioninfo['resultlist'][0]['question_text'];
 	?>
 	</div>		

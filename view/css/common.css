@@ -2,7 +2,8 @@
 html,body{
 }
 body{
-	background-image:url('dark_geometric.png');
+	background-color:#F1F1F1;
+	background:url('../img/bgnoise.gif');
 	repeat-x;
 	repeat-y;
 	font-family: 'Open Sans',"lucida grande", sans-serif,tahoma,verdana,arial,sans-serif;
@@ -18,6 +19,15 @@ body{
 	box-shadow:0 2px 2px -2px #CD4900;
 	-moz-box-shadow:0 2px 2px -2px #CD4900;
 	-webkit-box-shadow:0 2px 2px -2px #CD4900;
+/*	background-color:#2D2D2D;
+	position:fixed;
+	z-index:999999999;
+	border-bottom:1px solid #CD4900;
+	box-shadow:0 2px 2px -2px #CD4900;
+    -moz-box-shadow:0 2px 2px -2px #CD4900;
+    -webkit-box-shadow:0 2px 2px -2px #CD4900;
+>>>>>>> white-layout
+*/
 }
 .footer{
 	height:20px;
@@ -35,6 +45,10 @@ body{
 	width:90%;
     background-color:#383737;
     color:#FFFFFF;
+/*
+	width:100%;
+>>>>>>> white-layout
+*/
     margin:0px 10px 10px 0px;
     padding:6px;
 	border-left:4px solid #5A5858;
@@ -52,7 +66,7 @@ textarea{
 }
 .textbox{
 	border:1px solid #999999;
-    outline:none;
+	outline:none;
 	font-size:16px;
 	padding:4px;
 }
@@ -102,10 +116,6 @@ textarea:focus, .textbox:focus, select:focus{
 .form{
 	padding:6px;
 	margin:10px 0px 10px 0px;
-}
-li{
-	padding:10px;
-	font-size:14px;
 }
 .textarea-focused{
 	height: 64px;
