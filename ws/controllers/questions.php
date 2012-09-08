@@ -39,11 +39,11 @@ class question_WS{
 	}
 	function addQuestion($params){
 //		$getdata = new getData;
-//		$params['userid'] = $_SESSION["userid"];
 //		$questionlist = $getdata->add_question($params);
 //		header('Content-Type:application/json');
 //		echo json_encode($questionlist);
 		$ques = new Question;
+		$params['userid'] = $_SESSION["userid"];
 		$rs_obj = $ques->add($params);
 		if($rs_obj->attributes()){
 			$json_obj = $rs_obj->attributes();
@@ -53,7 +53,7 @@ class question_WS{
 			return 0;
 		}
 	}
-	function questionInfo($params,$returnflag,$json=0){
+	function questionInfo($params,$json=0){
 //		$getdata = new getData();
 //		$questioninfo = $getdata->get_question_info($params);
 //		if($returnflag){

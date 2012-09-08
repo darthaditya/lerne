@@ -1,9 +1,9 @@
 <?php
 require_once('../config.php');
-require_once(FILE_ROOT."db/question/getdata.php");
+require_once(FILE_ROOT.'ws/controllers/questions.php');
 
 $action = $_REQUEST['action'];
-$request = new WS;
+$request = new question_WS;
 
 switch($_SERVER['REQUEST_METHOD']){
 	case "GET":
@@ -16,51 +16,51 @@ switch($_SERVER['REQUEST_METHOD']){
 		break;
 };
 
-class WS{
-	function get($action,$_REQUEST){
-		switch($action){
-			case "list":
-				$this->listQuestions($_REQUEST);
-			break;
-			case "questioninfo":
-					$this->questionInfo($_REQUEST);
-			break;
-			default:
-			break;
-		};
-	}
-	function post($action,$_REQUEST){
-		switch($action){
-			case "add":
-				$this->addQuestion($_REQUEST);
-				break;
-			default:
-				break;
-		};
-	}
-	function listQuestions(){
-		$getdata = new getData;
-		$questionlist = $getdata->get_questions();
-		header('Content-Type:application/json');
-		echo json_encode($questionlist);
-	}
-	function addQuestion($params){
-		$getdata = new getData;
-		$params['userid'] = $_SESSION["userid"];
-		$questionlist = $getdata->add_question($params);
-		header('Content-Type:application/json');
-		echo json_encode($questionlist);
-	}
-	function questionInfo($params,$returnflag){
-		$getdata = new getData();
-		$questioninfo = $getdata->get_question_info($params);
-		if($returnflag){
-			return $questioninfo;
-		}else{
-			header('Content-Type:application/json');
-			echo json_encode($questioninfo);
-		}
-	}
-}
+//class WS{
+//	function get($action,$_REQUEST){
+//		switch($action){
+//			case "list":
+//				$this->listQuestions($_REQUEST);
+//			break;
+//			case "questioninfo":
+//					$this->questionInfo($_REQUEST);
+//			break;
+//			default:
+//			break;
+//		};
+//	}
+//	function post($action,$_REQUEST){
+//		switch($action){
+//			case "add":
+//				$this->addQuestion($_REQUEST);
+//				break;
+//			default:
+//				break;
+//		};
+//	}
+//	function listQuestions(){
+//		$getdata = new getData;
+//		$questionlist = $getdata->get_questions();
+//		header('Content-Type:application/json');
+//		echo json_encode($questionlist);
+//	}
+//	function addQuestion($params){
+//		$getdata = new getData;
+//		$params['userid'] = $_SESSION["userid"];
+//		$questionlist = $getdata->add_question($params);
+//		header('Content-Type:application/json');
+//		echo json_encode($questionlist);
+//	}
+//	function questionInfo($params,$returnflag){
+//		$getdata = new getData();
+//		$questioninfo = $getdata->get_question_info($params);
+//		if($returnflag){
+//			return $questioninfo;
+//		}else{
+//			header('Content-Type:application/json');
+//			echo json_encode($questioninfo);
+//		}
+//	}
+//}
 ?>
 

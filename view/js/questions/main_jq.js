@@ -24,11 +24,47 @@ function Question(){
 			data: postdata,
 			dataType:'json',
 			error:function(e){console.log(e);},
-			success:function(data){console.log(data);}
+			success:function(data){
+				listQuestions();
+			}
 		});	
-};
+	};
+	var listQuestions = function(){
+   var url = "ws/questions_ws.php?action=list";
+   var callback = function(data) {
+     var questionlist = data;//jQuery.parseJSON(data);//.responseText);
+     //questionlist = questionlist;//.resultlist;
+     $("#ls_list_questions ul").html('');
+					var finalListItems = '';
+     for(var i=0;i<questionlist.length;i++){
+     //for(var i=0;i<2;i++){
+      var tagList = questionlist[i].tags.split(',');
+      var tagSpan = '';
+      for(var j=0;j<tagList.length;j++){
+       if(tagList[j]){
+        tagSpan += '<li><a href="#">'+tagList[j]+'</a></li> ';
+       }
+      }
+      var listitem = '<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+questionlist[i].question_text+'</div>'+
+          '<ul><a href="question/index.php?id='+questionlist[i].id+'"><li class="lr_question_answer_link">Answer this question</li></a></ul>'+
+          '<div style="clear:both"></div>'+
+          '<ul class="tags">'+tagSpan+'</ul><div style="clear:both"></li>';
+						finalListItems += listitem;
+     }
+					$("#ls_list_questions ul").html(finalListItems);
+   };
+			$.ajax({
+				url: url,
+				type: 'GET',
+				dataType:'json',
+				data: 'action=list',
+				error:function(e){console.log(e);},
+				success:callback
+			});
+ };
 	return {
 		init: function(){
+			listQuestions();
 			$('#ls_add_question_text').keyup(enableSubmit);
 			$('#ls_add_question_submit').click(addQuestion);
 			$('#lr_add_question').click(function(){$('#lr_add_question_form').css('display','block');});

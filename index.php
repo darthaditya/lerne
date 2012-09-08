@@ -55,7 +55,8 @@
 		</div>
 	</div>
 	<div style="clear:both"></div>
-<script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>
+<!--<script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>-->
+<script type="text/javascript" src="<?php echo APP_ROOT."/view/js/jquery-1.8.1.min.js" ?>"></script>
 <script type="text/javascript" src="<?php echo APP_ROOT."/view/js/questions/main_jq.js" ?>"></script>
 <script type="text/javascript">
 //YUI().use('lr-question', function (Y) {
