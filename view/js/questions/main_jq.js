@@ -41,7 +41,7 @@ function Question(){
       var tagList = questionlist[i].tags.split(',');
       var tagSpan = '';
       for(var j=0;j<tagList.length;j++){
-       if(tagList[j]){
+       if(tagList[j] && tagList[j] != 'Enter Tags'){
         tagSpan += '<li><a href="#">'+tagList[j]+'</a></li> ';
        }
       }

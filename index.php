@@ -36,12 +36,6 @@
 	</div>
 	<div style="clear:both"></div>
 	<div class="ls_sub_content">
-		<div id="ls_list_questions" class="ls_list_questions">
-			<div id="lr_user_subscriptions" class="title">Recent Questions</div>
-			<ul>
-				Loading Questions...
-			</ul>
-		</div>
 		<div id="lr_subject_list" class="lr_subject_list">
 			<div id="lr_user_subscriptions" class="title">My Subjects</div>
 			<ul>
@@ -51,6 +45,12 @@
 					echo '<li>'.$value.'</li>';
 				}
 			?>
+			</ul>
+		</div>
+		<div id="ls_list_questions" class="ls_list_questions">
+			<div id="lr_user_subscriptions" class="title">Recent Questions</div>
+			<ul>
+				Loading Questions...
 			</ul>
 		</div>
 	</div>
