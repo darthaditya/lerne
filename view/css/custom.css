@@ -1,7 +1,7 @@
 .lr_user_image{
 	float:left;
-	height:66px;
-	width:66px;
+	height:48px;
+	width:48px;
 	padding:2px;
 	margin-right:10px;
 	border:1px solid #E2E0D8;
@@ -83,7 +83,7 @@
 	cursor:pointer;
 }
 .ls_list_questions .lr_question_text{
-	height:55px;
+	height:38px;
 	overflow:hidden;
 }
 .lr_login_user_info{
