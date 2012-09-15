@@ -17,9 +17,8 @@
 		<div class="lr_all_subject_list_div">
 			<select id="lr_subject_list" class="lr_all_subject_list">
 				<?php
-					$subject = explode(',',SUBJECT_LIST);
-					foreach($subject as $value){
-						echo '<option>'.$value.'</option>';
+					foreach($GLOBALS['SUBJECT_LIST'] as $subject => $value){
+						echo '<option id="'.$subject.'">'.$value.'</option>';
 					}
 				?>
 			</select>
@@ -40,9 +39,16 @@
 			<div id="lr_user_subscriptions" class="title">My Subjects</div>
 			<ul>
 			<?php
-				$subject = explode(',',SUBJECT_LIST);
-				foreach($subject as $value){
-					echo '<li>'.$value.'</li>';
+				$i=0;
+				$class;
+				foreach($GLOBALS['SUBJECT_LIST'] as $subject => $value){
+					if($i==0){
+						$class='selected';
+					}else{
+						$class='';
+					}
+					echo '<li id="'.$subject.'" class="lr_subject_list_item '.$class.'">'.$value.'</li>';
+					$i++;
 				}
 			?>
 			</ul>
@@ -56,8 +62,8 @@
 	</div>
 	<div style="clear:both"></div>
 <!--<script src="http://yui.yahooapis.com/3.5.1/build/yui/yui-min.js"></script>-->
-<script type="text/javascript" src="<?php echo APP_ROOT."/view/js/jquery-1.8.1.min.js" ?>"></script>
-<script type="text/javascript" src="<?php echo APP_ROOT."/view/js/questions/main_jq.js" ?>"></script>
+<script type="text/javascript" src="<?php echo APP_ROOT."view/js/jquery-1.8.1.min.js" ?>"></script>
+<script type="text/javascript" src="<?php echo APP_ROOT."view/js/questions/main_jq.js" ?>"></script>
 <script type="text/javascript">
 //YUI().use('lr-question', function (Y) {
 //    Y.LrQuestion.init();
@@ -73,4 +79,3 @@ $(document).ready(function(){
 });
 </script>
 <?php require_once(FILE_ROOT.'view/footer.inc'); ?>
-
