@@ -42,11 +42,12 @@
 	background-color:#FFFFFF;
 >>>>>>> white-layout
 */
+	cursor:pointer;
 	margin: 0px 10px 10px 0px;
 	padding:10px;
 }
-.lr_subject_list ul li{
-	cursor:pointer;
+.lr_subject_list ul li.selected{
+color:#F7931E;
 }
 .ls_list_questions ul{
 }

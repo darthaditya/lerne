@@ -1,8 +1,8 @@
 <?php
 class Question extends ActiveRecord\Model{
  public function search($params){
-  $location  = $params['location'];
-  $rs = $this->all();//array('conditions' => "location LIKE '%$location%'"));
+  $subject  = $params['subject'];
+  $rs = $this->all(array('conditions' => "subject LIKE '%$subject%'"));
   return $rs;
  }
  public function get($params){
