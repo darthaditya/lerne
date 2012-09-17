@@ -18,6 +18,25 @@
 .lr_logout a:hover{
 	text-decoration:underline;
 }
+/*/////// LOGIN PAGE /////// */
+.lr_content_student,.lr_content_teacher{
+	height:200px;
+	width:400px;
+	color:#383737;
+	background-color:beige;
+	border-radius:10px;
+	-moz-border-radius:10px;
+}
+.lr_content_login_title{
+	font-size:32px;
+	text-align:center;
+}
+.lr_content_student{
+	float:left;
+}
+.lr_content_teacher{
+	float:right;
+}
 .ls_add_question_text,.ls_add_question_submit{
 	float:left;
 }

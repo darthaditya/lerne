@@ -35,6 +35,7 @@ if ($user) {
 <html>
 <head>
    <title>Welcome to Lern!</title>
+   <?php require_once('config.php'); ?>
    <?php require_once('view/css.inc'); ?>
 </head>
 <body class="yui-skin-sam">
@@ -58,46 +59,21 @@ if ($user) {
            ref.parentNode.insertBefore(js, ref);
          }(document));
       </script>
-<div class="fb-login-button">Login with Facebook</div>
-
-<!-- # This is for adding FB registration #
-      <div 
-        class="fb-registration" 
-        data-fields="[{'name':'name'}, {'name':'email'},
-          {'name':'favorite_car','description':'What is your favorite car?',
-            'type':'text'}]" 
-        data-redirect-uri='FB_REDIRECTLOGIN'
-			</div>
--->
-  </script>
-
-<div id="doc2" class="yui-t2">
-        <div id="leftheader">
-           <a href="index.php"><div id="hd" role="banner">
-                <h1>Lerne</h1>
-           </div>
-           </a>
-        </div>
-
-<div id="bd">
-	<div id="yui-main">
-		<div class="yui-b">
-			<div class="yui-gc">
-				<div class="yui-u first">
-					<div id="loginbutton">
-					  <a href="<?php echo $loginUrl ?>"><img src="view/img/fb_connect.png" alt="Login with Facebook"/></a>
-					</div>
-				</div>
-				<div class="yui-u">
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="yui-b">
+						<div id="lr_header" class="header">
+						</div>
+						<div id="lr_content" class="content">
+							<div id="lr_content_student" class="lr_content_student">
+								<div class="lr_content_login_title">Are you a student?</div>
+								<a href="<?php echo $loginUrl ?>"><img src="view/img/fb_connect.png" alt="Login with Facebook"/></a>
+							</div>
+							<div id="lr_content_teacher" class="lr_content_teacher">
+								<div class="lr_content_login_title">Are you a teacher?</div>
+								<a href="setup.php">Get lerne for your class</a>
+							</div>
+							<div style="clear:both"></div>
+						</div>
 	<!-- YOUR NAVIGATION GOES HERE -->
-	</div>
-	</div>
-  <object width="425" height="350" data="http://www.youtube.com/v/a6kwIBI3j98" type="application/x-shockwave-flash"><param name="src" value="http://www.youtube.com/v/a6kwIBI3j98" /></object>
+<!--  <object width="425" height="350" data="http://www.youtube.com/v/a6kwIBI3j98" type="application/x-shockwave-flash"><param name="src" value="http://www.youtube.com/v/a6kwIBI3j98" /></object>-->
 <!--
 <script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
 <script type="text/javascript" src="view/js/constants.js"></script>
