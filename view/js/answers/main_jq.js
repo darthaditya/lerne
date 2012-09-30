@@ -29,30 +29,34 @@ function Answer(){
 		});	
 	};
 	var listAnswers = function(){
-   var url = LrConstants.approot+"ws/answers_ws.php";
-			var questionid = $('#lr_question_text').attr('questionid');
-   var data = "action=list&questionid="+questionid;
-   var callback = function(data) {
-     var answerlist = data;
-     $("#ls_list_questions ul").html('');
-					var finalListItems = '';
-					$("#lr_list_answers ul").html('');
-     for(var i=0;i< answerlist.length;i++){
-      var listitem = '<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+answerlist[i].answer_text+'</div>'+
-          '<div style="clear:both"></div>';
-						finalListItems += listitem;
-     }
-					$("#lr_list_answers ul").html(finalListItems);
-   };
-			$.ajax({
-				url: url,
-				type: 'GET',
-				dataType:'json',
-				data: data,
-				error:function(e){console.log(e);},
-				success:callback
-			});
- };
+		var url = LrConstants.approot+"ws/answers_ws.php";
+		var questionid = $('#lr_question_text').attr('questionid');
+		var data = "action=list&questionid="+questionid;
+		var callback = function(data) {
+			var answerlist = data;
+			$("#ls_list_questions ul").html('');
+			var finalListItems = '';
+			$("#lr_list_answers ul").html('');
+			if(answerlist.length){
+				for(var i=0;i< answerlist.length;i++){
+					var listitem = '<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+answerlist[i].answer_text+'</div>'+
+					'<div style="clear:both"></div>';
+					finalListItems += listitem;
+				}
+				$("#lr_list_answers ul").html(finalListItems);
+			}else{
+				$("#lr_list_answers ul").html('No answers yet!');
+			}
+		};
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType:'json',
+			data: data,
+			error:function(e){console.log(e);},
+			success:callback
+		});
+	 };
 	return {
 		init: function(){
 			listAnswers();
