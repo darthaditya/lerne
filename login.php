@@ -59,19 +59,20 @@ if ($user) {
            ref.parentNode.insertBefore(js, ref);
          }(document));
       </script>
-						<div id="lr_header" class="header">
-						</div>
-						<div id="lr_content" class="content">
-							<div id="lr_content_student" class="lr_content_student">
-								<div class="lr_content_login_title">Are you a student?</div>
-								<a href="<?php echo $loginUrl ?>"><img src="view/img/fb_connect.png" alt="Login with Facebook"/></a>
-							</div>
-							<div id="lr_content_teacher" class="lr_content_teacher">
-								<div class="lr_content_login_title">Are you a teacher?</div>
-								<a href="setup.php">Get lerne for your class</a>
-							</div>
-							<div style="clear:both"></div>
-						</div>
+	<div id="lr_header" class="header">
+	</div>
+	<div id="lr_content" class="container">
+		<div id="lr_content_student" class="lr_content_student span5">
+			<h1>Student?</h1>
+			<a href="<?php echo $loginUrl ?>"><img src="view/img/fb_connect.png" alt="Login with Facebook"/></a>
+		</div>
+		<div id="lr_content_teacher" class="lr_content_teacher span5">
+			<h1>Admin?</h1>
+			<p>Get Lerne for your school or class now!</p>
+			<a class="btn btn-primary btn-large" href="setup.php">Get lerne for your class</a>
+		</div>
+		<div style="clear:both"></div>
+	</div>
 	<!-- YOUR NAVIGATION GOES HERE -->
 <!--  <object width="425" height="350" data="http://www.youtube.com/v/a6kwIBI3j98" type="application/x-shockwave-flash"><param name="src" value="http://www.youtube.com/v/a6kwIBI3j98" /></object>-->
 <!--

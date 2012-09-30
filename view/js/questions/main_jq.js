@@ -13,11 +13,17 @@ function Question(){
 		}
 	};
 	var addQuestion = function(){
+		var subjectName;
+		$('#lr_subject_list ul li').each(function(index,value){
+			if($(value).hasClass('selected')){
+				subjectName = $(value).attr('id');	
+			}
+		});
 		var text = $('#ls_add_question_text').val();//Y.Lang.trim(Y.one('#ls_add_question_text').get('value'));
-  var tags = $('#lr_add_question_tags').val();//Y.one('#lr_add_question_tags').get('value');
-  var subject = $('#lr_subject_list').val();//Y.one('#lr_subject_list').get('value');
-  var postdata = "text="+text+"&tags="+tags+"&subject="+subject;
-  var url = "ws/questions_ws.php?action=add";
+		var tags = $('#lr_add_question_tags').val();//Y.one('#lr_add_question_tags').get('value');
+		var subject = subjectName;
+		var postdata = "text="+text+"&tags="+tags+"&subject="+subject;
+		var url = "ws/questions_ws.php?action=add";
 		$.ajax({
 			url: url,
 			type:'POST',
@@ -30,53 +36,63 @@ function Question(){
 		});	
 	};
 	var listQuestions = function(){
-			var subjectName;
-			if($(this).hasClass('lr_subject_list_item')){
-				$('#lr_subject_list ul li').each(function(index,value){
-					if($(value).hasClass('selected')){
-						$(value).removeClass('selected')
-					}
-				});
-				$(this).addClass('selected');
-				subjectName = $(this).attr('id');
-			}else{
-				$('#lr_subject_list ul li').each(function(index,value){
-					if($(value).hasClass('selected')){
-						subjectName = $(value).attr('id');	
-					}
-				});
-			}
-   var url = "ws/questions_ws.php?action=list";
-   var callback = function(data) {
-     var questionlist = data;//jQuery.parseJSON(data);//.responseText);
-     //questionlist = questionlist;//.resultlist;
-     $("#ls_list_questions ul").html('');
-					var finalListItems = '';
-     for(var i=0;i<questionlist.length;i++){
-     //for(var i=0;i<2;i++){
-      var tagList = questionlist[i].tags.split(',');
-      var tagSpan = '';
-      for(var j=0;j<tagList.length;j++){
-       if(tagList[j] && tagList[j] != 'Enter Tags'){
-        tagSpan += '<li><a href="#">'+tagList[j]+'</a></li> ';
-       }
-      }
-      var listitem = '<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+questionlist[i].question_text+'</div>'+
-          '<ul><a href="JavaScript:void(0);"><li id="lr_question_answer_link_'+questionlist[i].id+'" questionid="'+questionlist[i].id+'" class="lr_question_answer_link">Answer this question</li></a><ul id="lr_question_answers_'+questionlist[i].id+'"></ul></ul>'+
-          '<div style="clear:both"></div>'+
-          '<ul class="tags">'+tagSpan+'</ul><div style="clear:both"></li>';
-						finalListItems += listitem;
-     }
-					$("#ls_list_questions ul").html(finalListItems);
-   };
-			$.ajax({
-				url: url,
-				type: 'GET',
-				dataType:'json',
-				data: 'action=list&subject='+subjectName,
-				error:function(e){console.log(e);},
-				success:callback
+		var subjectName;
+		if($(this).hasClass('lr_subject_list_item')){
+			$('#lr_subject_list ul li').each(function(index,value){
+				if($(value).hasClass('selected')){
+					$(value).removeClass('selected')
+				}
 			});
+			$(this).addClass('selected');
+			subjectName = $(this).attr('id');
+			subjectTitle = $(this).html();
+			$('#lr_user_subscriptions').html(subjectTitle);
+		}else{
+			$('#lr_subject_list ul li').each(function(index,value){
+				if($(value).hasClass('selected')){
+					subjectName = $(value).attr('id');	
+					subjectTitle = $(this).html();
+					$('#lr_user_subscriptions').html(subjectTitle);
+				}
+			});
+		}
+		var url = "ws/questions_ws.php?action=list";
+		var callback = function(data) {
+			var questionlist = data;
+			$("#ls_list_questions ul").html('');
+			var finalListItems = '';
+			for(var i=0;i<questionlist.length;i++){
+				var tagList = questionlist[i].tags.split(',');
+				var tagSpan = '';
+				for(var j=0;j<tagList.length;j++){
+					if(tagList[j] && tagList[j] != 'Enter Tags'){
+						tagSpan += '<li><a href="#">'+tagList[j]+'</a></li> ';
+					}
+				}
+				var listitem = '<div class="row">'+
+				'<div class="span1"><i class="icon-search"></i></div>'+
+				'<div class="span7">'+
+				'<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+questionlist[i].question_text+'</div>'+
+				'<ul><a href="JavaScript:void(0);">'+
+				'<li id="lr_question_answer_link_'+questionlist[i].id+'" questionid="'+questionlist[i].id+'" class="lr_question_answer_link">Answer this question</li></a>'+
+				'<ul id="lr_question_answers_'+questionlist[i].id+'"></ul></ul>'+
+				'<div style="clear:both"></div>'+
+				'<ul class="tags">'+tagSpan+'</ul><div style="clear:both"></li>'+
+				'</div></div>';
+				finalListItems += listitem;
+			}
+			$("#ls_list_questions ul").html(finalListItems);
+			$('#lrAddQuestionForm').modal('hide');
+		};
+console.log("XXX "+subjectName);
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType:'json',
+			data: 'action=list&subject='+subjectName,
+			error:function(e){console.log(e);},
+			success:callback
+		});
 		};
 		var listAnswers = function(){
    var url = "ws/answers_ws.php";
