@@ -220,3 +220,15 @@ question/index.php
 .lr_logout a:hover{
   text-decoration:underline;
 }
+/**************************
+* Vote up/down links
+***************************/
+.lr_question_voteup_link,.lr_question_votedown_link,.lr_answer_voteup_link,.lr_answer_votedown_link{
+	cursor:pointer;
+}
+.lr_question_loader_link{
+	background-image: url("../img/loader-small.gif");
+	background-repeat: no-repeat;
+	height:14px;
+	width:14px;
+}

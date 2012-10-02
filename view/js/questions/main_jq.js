@@ -72,15 +72,34 @@ function Question(){
 	//						tagSpan += '<li><a href="#">'+tagList[j]+'</a></li> ';
 	//					}
 	//				}
+					var answercount = questionlist[i].answer_count;
+					var voteupcount = questionlist[i].votecountup;
+					var votedowncount = Math.abs(questionlist[i].votecountdown);
+					var defaultVoteUpClass = "lr_question_voteup_link badge badge-default";
+					var defaultVoteDownClass = "lr_question_votedown_link badge badge-default";
+					if(questionlist[i].voted){
+						if(questionlist[i].votetype < 0 || questionlist[i].votetype > 0){
+							if(questionlist[i].votetype < 0){
+								defaultVoteUpClass = "badge badge-default";
+								defaultVoteDownClass = "badge badge-important";
+							}else{
+								defaultVoteUpClass = "badge badge-success";
+								defaultVoteDownClass = "badge badge-default";
+							}
+						} 
+					}
 					var listitem = '<div class="row">'+
-					//'<div class="span1"><i class="icon-search"></i></div>'+
 					'<div class="span10">'+
 					'<li class="lr_question_list_content"><div class="lr_user_image"></div>'+
 					'<div class="lr_question_text" id="lr_question_text_'+qid+'">'+
 					questionlist[i].question_text+'</div>'+
 					'<div class="clear:both"></div>'+
-					'<span id="lr_question_answer_link_'+qid+'" questionid="'+qid+'" class="lr_question_answer_link label label-info" value="'+questionlist[i].answer_count+'">'+
-					questionlist[i].answer_count+' answers</span>'+
+					'<span id="lr_question_answer_link_'+qid+'" questionid="'+qid+'" class="lr_question_answer_link label label-info" value="'+answercount+'">'+
+					answercount+' answers</span>'+
+					'<span id="lr_question_voteup_link_'+qid+'" questionid="'+qid+'" class="'+defaultVoteUpClass+'" value="'+voteupcount+'">'+
+					voteupcount+' <i class="icon-thumbs-up"></i></span>'+
+					'<span id="lr_question_votedown_link_'+qid+'" questionid="'+qid+'" class="'+defaultVoteDownClass+'" value="'+votedowncount+'">'+
+					votedowncount+' <i class="icon-thumbs-down"></i></span>'+
 					'<div class="clear:both"></div>'+
 			'<a questionid="'+qid+'" href="#lrAddAnswerForm" role="button" class="label label-default lr_question_answer_post_link" data-toggle="modal" id="lr_question_answer_post_link_'+qid+'">'+
 					'Answer this question</a>'+
@@ -114,7 +133,6 @@ function Question(){
 		}else{
 			questionid = $(this).attr('questionid');
 		}
-console.log(questionid);
 		var elementId = $(this).attr('id');
 		var data = "action=list&questionid="+questionid;
 		$("#lr_question_answers_"+questionid).html('Loading...');
@@ -124,7 +142,27 @@ console.log(questionid);
 			$("#lr_question_answers_"+questionid).html('');
 			if(answerlist.length){
 				for(var i=0;i< answerlist.length;i++){
+					var voteupcount = answerlist[i].votecountup;
+					var votedowncount = Math.abs(answerlist[i].votecountdown);
+					var defaultVoteUpClass = "lr_answer_voteup_link badge badge-default";
+					var defaultVoteDownClass = "lr_answer_votedown_link badge badge-default";
+					if(answerlist[i].voted){
+						if(answerlist[i].votetype < 0 || answerlist[i].votetype > 0){
+							if(answerlist[i].votetype < 0){
+								defaultVoteUpClass = "badge badge-default";
+								defaultVoteDownClass = "badge badge-important";
+							}else{
+								defaultVoteUpClass = "badge badge-success";
+								defaultVoteDownClass = "badge badge-default";
+							}
+						} 
+					}
+					var aid = answerlist[i].id;
 					var listitem = '<li class="lr_question_list_content"><div class="lr_user_image"></div><div class="lr_question_text">'+answerlist[i].answer_text+'</div>'+
+					'<span id="lr_answer_voteup_link_'+aid+'" questionid="'+aid+'" class="'+defaultVoteUpClass+'" value="'+voteupcount+'">'+
+					voteupcount+' <i class="icon-thumbs-up"></i></span>'+
+					'<span id="lr_answer_votedown_link_'+aid+'" questionid="'+aid+'" class="'+defaultVoteDownClass+'" value="'+votedowncount+'">'+
+					votedowncount+' <i class="icon-thumbs-down"></i></span>'+
 					'<div style="clear:both"></div>';
 					finalListItems += listitem;
 					if(incrementCount){
@@ -151,7 +189,6 @@ console.log(questionid);
 	var addAnswer = function(data){
         var postdata = "action=add&text="+data.answerText+"&questionid="+data.qid;
 		var url = "ws/answers_ws.php";
-console.log(postdata);
 		var qid = data.qid;
         $.ajax({
             url: url,
@@ -162,6 +199,44 @@ console.log(postdata);
             success:function(data){
 				var dataObj = {qid:qid};
                 listAnswers(dataObj);
+            }
+        });
+    };
+	var addVote = function(){
+		var voteType = 0;
+		var badgeType = 'badge-important';
+		var iconType = "icon-thumbs-down";
+		var iconId = $(this).attr('id');
+		var defaultType = 'question';
+		if($(this).hasClass('lr_question_voteup_link') || $(this).hasClass('lr_answer_voteup_link')){
+			voteType = 1;
+			badgeType = 'badge-success';
+			iconType = "icon-thumbs-up";
+		}
+		if($(this).hasClass('lr_answer_voteup_link') || $(this).hasClass('lr_answer_votedown_link')){
+			defaultType = 'answer';
+		}
+		var voteCount = parseInt($(this).attr('value'));
+		$(this).removeClass('badge');
+		$(this).removeClass('badge-default');
+		$(this).html('<img src="view/img/loader-small.gif"/>');
+		var qid = $(this).attr('questionid');
+        var postdata = "action=vote&voteup="+voteType+"&questionid="+qid;
+		var url = "ws/questions_ws.php";
+        $.ajax({
+            url: url,
+            type:'POST',
+            data: postdata,
+            dataType:'json',
+            error:function(e){console.log(e);},
+            success:function(data){
+				voteCount++;
+				$('#'+iconId).html('');
+				$('#'+iconId).html(voteCount+' <i class="'+iconType+'"></i>');
+				$('#'+iconId).addClass('badge');
+				$('#'+iconId).addClass(badgeType);
+				$('#lr_'+defaultType+'_votedown_link_'+qid).removeClass('lr_'+defaultType+'_votedown_link');
+				$('#lr_'+defaultType+'_voteup_link_'+qid).removeClass('lr_'+defaultType+'_voteup_link');
             }
         });
     };
@@ -186,6 +261,10 @@ console.log(postdata);
 				var qid = $(this).attr('qid'); 
 				addAnswer({qid:qid,answerText:text});
 			});
+			$('.lr_question_voteup_link').live('click',addVote);
+			$('.lr_question_votedown_link').live('click',addVote);
+			$('.lr_answer_voteup_link').live('click',addVote);
+			$('.lr_answer_votedown_link').live('click',addVote);
 		}
 	};
 };

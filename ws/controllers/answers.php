@@ -25,8 +25,28 @@ class answer_WS{
 		$ans = new Answer;
 		$rs_obj = $ans->search($params);
 		$json_obj = array();
+		$votes = new Vote();
 		foreach($rs_obj as $result){
-			array_push($json_obj,$result->attributes());
+			$resultObj = $result->attributes();
+
+			$vote_count = $votes->getCount(array('componentid'=>$result->id,'type'=>'answer'));
+            $resultObj['votecountup'] = $vote_count['voteup'];
+            $resultObj['votecountdown'] = $vote_count['votedown'];
+
+            $resultObj['voted'] = 0;
+            $voted = $votes->getVote(array('componentid'=>$result->id,'userid'=>$params['userid'],'type'=>'question'));
+            if($voted){
+                $resultObj['voted'] = 1;
+                $votetype = $voted->attributes();
+                $resultObj['votetype'] = 0;
+                if($votetype['votes'] > 0){
+                    $resultObj['votetype'] = 1;
+                }else if($votetype['votes'] < 0){
+                    $resultObj['votetype'] = -1;
+                }
+			}
+
+			array_push($json_obj,$resultObj);
 		}
 		if(!$json){
 			header('Content-Type:application/json');

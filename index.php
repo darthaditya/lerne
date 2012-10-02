@@ -1,11 +1,11 @@
 <?php  
 	require_once('config.php');
-	require_once(FILE_ROOT.'addfbuser.php');
+//	require_once(FILE_ROOT.'addfbuser.php');
 	require_once(FILE_ROOT.'view/header.inc'); ?>
 <?php
 	require_once(FILE_ROOT.'data.ini');
-	$fbuser = new fbUser;
-	$fbuser->add_user($user_profile);
+//	$fbuser = new fbUser;
+//	$fbuser->add_user($user_profile);
 ?>
 <div id="lr_content" class="content">
 	<div class="row">
