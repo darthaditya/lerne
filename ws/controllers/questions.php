@@ -88,7 +88,6 @@ class question_WS{
 	function addVote($params){
 		$vote = new Vote;
 		$params['userid'] = 1;//$_SESSION["userid"];
-		$params['type'] = 'question';
 		$params['componentid'] = $params['questionid'];
 		if($params['voteup']){
 			$params['vote'] = 1;

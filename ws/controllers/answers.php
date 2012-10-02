@@ -26,6 +26,7 @@ class answer_WS{
 		$rs_obj = $ans->search($params);
 		$json_obj = array();
 		$votes = new Vote();
+		$params['userid'] = 1;//get this from session
 		foreach($rs_obj as $result){
 			$resultObj = $result->attributes();
 
@@ -34,7 +35,7 @@ class answer_WS{
             $resultObj['votecountdown'] = $vote_count['votedown'];
 
             $resultObj['voted'] = 0;
-            $voted = $votes->getVote(array('componentid'=>$result->id,'userid'=>$params['userid'],'type'=>'question'));
+            $voted = $votes->getVote(array('componentid'=>$result->id,'userid'=>$params['userid'],'type'=>'answer'));
             if($voted){
                 $resultObj['voted'] = 1;
                 $votetype = $voted->attributes();

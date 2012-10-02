@@ -208,6 +208,7 @@ function Question(){
 		var iconType = "icon-thumbs-down";
 		var iconId = $(this).attr('id');
 		var defaultType = 'question';
+		var postDataVoteType = 'question';
 		if($(this).hasClass('lr_question_voteup_link') || $(this).hasClass('lr_answer_voteup_link')){
 			voteType = 1;
 			badgeType = 'badge-success';
@@ -215,13 +216,14 @@ function Question(){
 		}
 		if($(this).hasClass('lr_answer_voteup_link') || $(this).hasClass('lr_answer_votedown_link')){
 			defaultType = 'answer';
+			postDataVoteType = 'answer';
 		}
 		var voteCount = parseInt($(this).attr('value'));
 		$(this).removeClass('badge');
 		$(this).removeClass('badge-default');
 		$(this).html('<img src="view/img/loader-small.gif"/>');
 		var qid = $(this).attr('questionid');
-        var postdata = "action=vote&voteup="+voteType+"&questionid="+qid;
+        var postdata = "action=vote&voteup="+voteType+"&questionid="+qid+"&type="+postDataVoteType;
 		var url = "ws/questions_ws.php";
         $.ajax({
             url: url,
