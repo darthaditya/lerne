@@ -11,7 +11,7 @@ define('FACEBOOK_APPID','FB APP ID');
 define('FACEBOOK_SECRET','FB SECRET');
 
 require_once (FILE_ROOT.'php-activerecord/ActiveRecord.php');
-
+require_once(FILE_ROOT.'source/include/membersite_config.php');
 ActiveRecord\Config::initialize(function($cfg)
 {
 		$cfg->set_model_directory(FILE_ROOT.'db/models');

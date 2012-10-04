@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /*
     Registration/Login script from HTML Form Guide
     V1.0
@@ -143,21 +143,24 @@ class FGMembersite
         }
         
         $_SESSION[$this->GetLoginSessionVar()] = $username;
-        
-        return true;
+        $destURL = $_SESSION['kickurl'] ? $_SESSION['kickurl'] : 'index.php';
+        //echo "<pre>"; print_r($destURL);die;
+        unset($_SESSION['kickurl']);
+        $this->RedirectToURL($destURL);
     }
     
     function CheckLogin()
     {
-         if(!isset($_SESSION)){ session_start(); }
-
-         $sessionvar = $this->GetLoginSessionVar();
+        if(!isset($_SESSION)){ session_start(); }
+        
+        $sessionvar = $this->GetLoginSessionVar();
          
-         if(empty($_SESSION[$sessionvar]))
-         {
-            return false;
-         }
-         return true;
+        if(empty($_SESSION[$sessionvar]))
+        {
+            $_SESSION['kickurl'] = $_SERVER['REQUEST_URI'];
+           return false;
+        }
+        return true;
     }
     
     function UserFullName()

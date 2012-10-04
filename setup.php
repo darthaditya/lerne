@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-   <title>Welcome to Lern!</title>
+   <title>Welcome to Lerne!</title>
    <?php require_once('view/css.inc'); ?>
 </head>
 <body class="yui-skin-sam">
