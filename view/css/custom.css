@@ -41,7 +41,8 @@
 	float:left;
 }
 .ls_add_question_text{
-	width:50%;
+	width:518px;
+	height:67px;
 	margin:10px 10px 10px 0px;
 }
 .ls_list_questions{
@@ -73,18 +74,13 @@ color:#F7931E;
 	clear:both;
 	background-color:#F5F5DC;
 	color:#383737;
-/*
-	background-color:#FFFFFF;
-	width:96%;
->>>>>>> white-layout
-*/
 	opacity:0.8;
 	margin:16px 0px 6px 0px;
 	/*border:3px solid #DEB887;*/
 	padding:10px;
     font-size:14px;
-		border-radius: 10px;
-		-moz-border-radius:10px;
+	border-radius: 6px;
+	-moz-border-radius:6px;
 }
 .ls_list_questions ul .lr_question_list_content a{
 	text-decoration:none;

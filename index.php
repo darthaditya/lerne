@@ -8,8 +8,8 @@
 //	$fbuser->add_user($user_profile);
 ?>
 <div id="lr_content" class="content">
-	<div class="row">
-		<div id="lr_subject_list" class="dropdown">
+	<div class="row" style="margin-bottom:10px;">
+		<div id="lr_subject_list" class="dropdown" style="float:left;">
 			<a id="lr_user_subscriptions" class="btn dropdown-toggle" data-toggle="dropdown" href="#" role="button">My Subjects <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 			<?php
@@ -27,7 +27,7 @@
 			?>
 			</ul>
 		</div>
-		<div>
+		<div style="float:right;">
 			<a href="#lrAddQuestionForm" role="button" class="btn" data-toggle="modal" id="lr_add_question">Ask a question</a>
 			<div class="modal hide fade" id="lrAddQuestionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-header">
@@ -35,7 +35,7 @@
 					<h3 id="myModalLabel">Ask a question</h3>
 				</div>
 				<div class="modal-body">
-				<textarea id="ls_add_question_text"  "ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="54" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
+				<textarea id="ls_add_question_text"  class="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="54" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
 				</div>
 				<div class="modal-footer form-actions">
 					<button id="ls_add_question_submit" class="btn btn-primary" data-loading-text="Posting...">Ask!</button>
@@ -48,7 +48,7 @@
 	<div class="ls_sub_content row">
 		<div id="ls_list_questions" class="ls_list_questions">
 			<div class="title" style="width:100%;">Recent Questions</div>
-			<ul>
+			<ul style="margin-left:0px;">
 				Loading Questions...
 			</ul>
 		</div>
@@ -61,7 +61,7 @@
 		</div>
 		<div class="modal-body">
 		<div class="alert alert-info" id="lr_modal_question_text"></div>
-		<textarea id="lr_add_answer_text" "ls_add_question_text">Write your answer here...</textarea>
+		<textarea id="lr_add_answer_text" class="ls_add_question_text">Write your answer here...</textarea>
 		</div>
 		<div class="modal-footer form-actions">
 			<button id="lr_add_answer_submit" class="btn btn-primary" data-loading-text="Posting..." qid="0">Post</button>

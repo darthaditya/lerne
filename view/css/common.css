@@ -1,6 +1,8 @@
 *{padding:0px;margin:0px;list-style:none;}
 html,body{
 }
+a{text-decoration:none;}
+a:hover{text-decoration:none;}
 body{
 	background-color:#F1F1F1;
 	background:url('../img/bg.jpg'); 
@@ -8,7 +10,7 @@ body{
 	font-family: 'Open Sans',"lucida grande", sans-serif,tahoma,verdana,arial,sans-serif;
 }
 .header{
-	height:76px;
+	height:54px;
 	width:100%;
 	font-weight:bold;
 	background-color:#2D2D2D;
@@ -42,15 +44,16 @@ body{
 }
 .title{
 	width:89%;
-    background-color:#383737;
     color:#F5F5DC;
 /*
+    background-color:#383737;
 	width:100%;
+	border-left:6px solid #5A5858;
 >>>>>>> white-layout
 */
     margin:0px 10px 10px 0px;
     padding:6px;
-	border-left:4px solid #5A5858;
+	border-bottom:1px solid #5A5858;
 }
 textarea{
 	height:32px;
