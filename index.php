@@ -1,12 +1,15 @@
 <?php  
 	require_once('config.php');
 //	require_once(FILE_ROOT.'addfbuser.php');
-	require_once(FILE_ROOT.'view/header.inc'); ?>
-<?php
-	require_once(FILE_ROOT.'data.ini');
 //	$fbuser = new fbUser;
 //	$fbuser->add_user($user_profile);
-?>
+	if(!$fgmembersite->CheckLogin()){
+	    $fgmembersite->RedirectToURL("login.php");
+	    exit;
+	}
+	require_once(FILE_ROOT.'view/header.inc');
+	require_once(FILE_ROOT.'data.ini');
+ ?>
 <div id="lr_content" class="content">
 	<div class="row" style="margin-bottom:10px;">
 		<div id="lr_subject_list" class="dropdown" style="float:left;">

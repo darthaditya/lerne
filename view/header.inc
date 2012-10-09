@@ -1,29 +1,5 @@
 <?php
-//require FILE_ROOT.'view/fb/facebook.php';
-//require_once(FILE_ROOT."view/fb/fbconfig.php");
-//
-//$facebook = new Facebook(array(
-//  'appId'  => FB_APPID,
-//  'secret' => FB_SECRET,
-//));
-//
-//
-//$user = $facebook->getUser();
-//
-//if ($user) {
-//  try {
-//    $user_profile = $facebook->api('/me');
-//  } catch (FacebookApiException $e) {
-//    error_log($e);
-//    $user = null;
-//  }
-//}
-//
-//if ($user) {
-//  $logoutUrl = $facebook->getLogoutUrl();
-//} else {
-//  header( 'Location: '.FB_REDIRECT ) ;
-//}
+require_once('config.php');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
  "http://www.w3.org/TR/html4/strict.dtd">
@@ -48,5 +24,8 @@
 					<li id="lr_logout" class="lr_logout"><a href="<?php echo $logoutUrl; ?>">Logout</a></li>
 				</ul>
 			</div>
+			<div id="lr_login_user_image" class="lr_login_user_image"><img src="<?php echo $_SESSION['fbuserpic']; ?>"  height="32px" width="32px"/></div>
+			<div id="lr_login_user_name" class="lr_login_user_name"><?php echo $fgmembersite->UserFullName(); ?></div>
+			<div id="lr_logout" class="lr_logout"><a href='./source/logout.php'>Logout</a></div>
 		</div>
 	</div>
