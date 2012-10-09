@@ -63,3 +63,14 @@ CREATE TABLE  `lerne`.`answers` (
 `created` BIGINT NOT NULL ,
 `votes` BIGINT NOT NULL DEFAULT  '0'
 ) ENGINE = INNODB;
+
+CREATE TABLE `votes` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `componentid` bigint(20) NOT NULL,
+  `votes` bigint(20) NOT NULL,
+  `creator` bigint(20) NOT NULL,
+  `type` bigint(20) NOT NULL,
+  `created` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
