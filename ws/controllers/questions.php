@@ -31,7 +31,7 @@ class question_WS{
 	
 		$answers = new Answer;
 		$votes = new Vote;
-		$params['userid'] = 1;//get this from SESSION
+		$params['userid'] = $_SESSION['lerne_userid'];//get this from SESSION
 		foreach($rs_obj as $result){
 			$answers_count = Answer::count(array('question_id'=>$result->id));	
 			$resultObj = $result->attributes();
@@ -64,7 +64,7 @@ class question_WS{
 	}
 	function addQuestion($params){
 		$ques = new Question;
-		$params['userid'] = $_SESSION["userid"];
+		$params['userid'] = $_SESSION["lerne_userid"];
 		$rs_obj = $ques->add($params);
 		if($rs_obj->attributes()){
 			$json_obj = $rs_obj->attributes();
@@ -87,7 +87,7 @@ class question_WS{
 	}
 	function addVote($params){
 		$vote = new Vote;
-		$params['userid'] = 1;//$_SESSION["userid"];
+		$params['userid'] = $_SESSION['lerne_userid'];//$_SESSION["userid"];
 		$params['componentid'] = $params['questionid'];
 		if($params['voteup']){
 			$params['vote'] = 1;
