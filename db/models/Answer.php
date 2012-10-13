@@ -14,5 +14,10 @@ class Answer extends ActiveRecord\Model{
 		$rs = $this->create(array('answer_text'=>$params['text'],'question_id'=>$params['questionid'],'creator'=>$params['userid'],'created'=>time()));
 		return $rs;
 	}
+	public function getUserQuestionAnswers($params){
+		$qids = $params['qids'];
+		$rs = $this->find('all',array('conditions'=>array('question_id in (?)',$qids)));
+		return $rs;
+	}
 }
 ?>

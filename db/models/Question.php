@@ -14,5 +14,15 @@ class Question extends ActiveRecord\Model{
 		$rs = $this->create(array('question_text'=>$params['text'],'subject'=>$params['subject'],'creator'=>$params['userid'],'tags'=>$params['tags'],'created'=>time()));
 		return $rs;
 	}
+	public function getUserQuestions($params){
+		$userid = $params['userid'];
+		$rs = $this->find('all',array('select'=>'id','conditions'=>array('creator = ?',$userid)));
+		return $rs;
+	}
+	public function getQuestionsSinceTimestamp($params){
+		$timestamp = $params['timestamp'];
+		$rs = $this->find('all',array('select'=>'id','conditions'=>array('created > ?',$timestamp)));
+		return $rs;
+	}
 }
 ?>
