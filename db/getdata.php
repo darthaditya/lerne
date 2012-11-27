@@ -43,7 +43,7 @@ class getData {
 		return $resultlist;
 	}
 	function current_user_info(&$totalamount){
-			$getuserexistsquery = "select id,username,facebookuserpic,totalamount from users where id=".$_SESSION['lerne_userid'];
+			$getuserexistsquery = "select id_user,username from lerne_users where id=".$_SESSION['lerne_userid'];
                         $getuserid = $this->rs_to_array($getuserexistsquery);
                         $_SESSION['totalamount'] = $getuserid["resultlist"][0]["totalamount"];
 			$totalamount = $getuserid["resultlist"][0]["totalamount"];

@@ -23,9 +23,10 @@ if(isset($_POST['submitted']))
     <script src="scripts/pwdwidget.js" type="text/javascript"></script>      
 </head>
 <body>
-
+    <div id="lr_header" class="header">
+    </div>
 <!-- Form Code Start -->
-<div class = 'content span4'id='fg_membersite'>
+<div class = 'content span4 offset1'id='fg_membersite'>
 <form id='register' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Register</legend>

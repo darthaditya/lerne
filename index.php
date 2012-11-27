@@ -3,6 +3,7 @@
 //	require_once(FILE_ROOT.'addfbuser.php');
 //	$fbuser = new fbUser;
 //	$fbuser->add_user($user_profile);
+	//echo "<pre>"; print_r($_SESSION);die;
 	if(!$fgmembersite->CheckLogin()){
 	    $fgmembersite->RedirectToURL("login.php");
 	    exit;
@@ -38,7 +39,7 @@
 					<h3 id="myModalLabel">Ask a question</h3>
 				</div>
 				<div class="modal-body">
-				<textarea id="ls_add_question_text"  class="ls_add_question_text" onfocus="if(this.value == 'Got a question?') {this.value=''}" cols="54" onblur="if(this.value == ''){this.value ='Got a question?'}">Got a question?</textarea>
+				<textarea id="ls_add_question_text"  class="ls_add_question_text" placeholder="Got a question?"> </textarea>
 				</div>
 				<div class="modal-footer form-actions">
 					<button id="ls_add_question_submit" class="btn btn-primary" data-loading-text="Posting...">Ask!</button>

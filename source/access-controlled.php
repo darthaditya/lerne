@@ -8,6 +8,7 @@ if(!$fgmembersite->CheckLogin())
     $fgmembersite->RedirectToURL("../login.php");
     exit;
 }
+//echo "<pre>"; print_r($_SESSION);die;
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">

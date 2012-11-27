@@ -22,9 +22,7 @@ if(isset($_POST['submitted']))
 	<div id="lr_content" class="content">
     <div class = "row">
 		  <div id="lr_content_student" class="lr_content_student span4">
-			
         <!-- Form Code Start -->
-
         <form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
           <fieldset>
             <h1 style="margin-left:70px;">Student?</h1>

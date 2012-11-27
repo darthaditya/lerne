@@ -65,6 +65,7 @@ class question_WS{
 	function addQuestion($params){
 		$ques = new Question;
 		$params['userid'] = $_SESSION["lerne_userid"];
+		//echo "<pre>"; echo "hello!"; print_r($_SESSION);die;
 		$rs_obj = $ques->add($params);
 		if($rs_obj->attributes()){
 			$json_obj = $rs_obj->attributes();

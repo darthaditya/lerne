@@ -1,23 +1,5 @@
 <?php
-/*
-    Registration/Login script from HTML Form Guide
-    V1.0
 
-    This program is free software published under the
-    terms of the GNU Lesser General Public License.
-    http://www.gnu.org/copyleft/lesser.html
-    
-
-This program is distributed in the hope that it will
-be useful - WITHOUT ANY WARRANTY; without even the
-implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.
-
-For updates, please visit:
-http://www.html-form-guide.com/php-form/php-registration-form.html
-http://www.html-form-guide.com/php-form/php-login-form.html
-
-*/
 require_once("class.phpmailer.php");
 require_once("class.smtp.php");
 require_once("formvalidator.php");
